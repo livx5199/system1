@@ -7,10 +7,18 @@ import TicketChoice from './components/TicketChoice'
 
 function App() {
   const [count, setCount] = useState(0)
+  const tickets = [
+    {
+      name: "Standard ticket",
+      price: 799
+    }, {
+      name: "VIP ticket",
+      price: 1299
+    }];
 
   return (
     <div className="App">
-      <TicketChoice />
+      <TicketChoice ticketchoices={tickets} />
 
       <CampingChoice />
 
@@ -19,7 +27,6 @@ function App() {
       <PersonalInfo/>
 
       <PaymentInfo/>
-
 
     </div>
   )

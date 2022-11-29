@@ -1,14 +1,15 @@
 import React from 'react'
 
-function TicketChoice() {
+function TicketChoice(props) {
+
   return (
       <div>
           <h1>TICKETS</h1>
       <section className='container'>
         <label htmlFor="select">Choose ticket type</label>
         <select name="ticket-type" id="ticket-type">
-          <option value="regular-ticket">Standard ticket (799,-)</option>
-          <option value="vip-ticket">VIP ticket (1299,-)</option>
+          {props.ticketchoices.map(ticket => 
+            <option value="regular-ticket">{ticket.name} ({ticket.price},-)</option>)}
         </select>
 
         <label htmlFor="select">Amount</label>
