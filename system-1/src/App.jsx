@@ -6,23 +6,41 @@ import PersonalInfo from './components/PersonalInfo'
 import TicketChoice from './components/TicketChoice'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [cart, setCart] = useState([])
+
   const tickets = [
     {
       name: "Standard ticket",
-      price: 799
+      price: 799,
+      id: 1
     }, {
       name: "VIP ticket",
-      price: 1299
+      price: 1299,
+      id: 2
     }];
+  
+  function addToCart(data) {
+    if (cart.find((entry) => entry.id === data.data.id)) {
+      setCart(oldCart => oldCart.map(entry => {
+        if (entry.id !== data.data.id) {
+          return entry
+        }
+        const copy = { ...entry };
+        copy.amount = copy.amount + 1;
+        return copy;
+      }))
+    } else {
+      setCart((oldCart) => oldCart.concat({ ...data.data, amount: 1 }));
+    }
+  }
 
   return (
     <div className="App">
-      <TicketChoice ticketchoices={tickets} />
+      <TicketChoice ticketchoices={tickets} addToCart={addToCart} />
 
       <CampingChoice />
 
-      <Basket/>
+      <Basket ticketchoices={tickets} cart={cart} />
 
       <PersonalInfo/>
 
