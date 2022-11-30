@@ -8,16 +8,15 @@ import TicketChoice from './components/TicketChoice'
 function App() {
   const [cart, setCart] = useState([])
 
-  const [spots, setSpots] = useState([])
+  const [campingSpots, setCampingSpots] = useState([])
 
   useEffect(() => {
     async function getCampingData() {
       const res = await fetch("http://localhost:8080/available-spots");
       const data = await res.json();
-      setSpots(data);
+      setCampingSpots(data);
     }
     getCampingData();
-    console.log(spots)
   }, [])
 
 
@@ -51,7 +50,7 @@ function App() {
     <div className="App">
       <TicketChoice ticketchoices={tickets} addToCart={addToCart} />
 
-      <CampingChoice />
+      <CampingChoice campingspots={campingSpots} />
 
       <Basket ticketchoices={tickets} cart={cart} />
 

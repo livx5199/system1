@@ -1,15 +1,16 @@
 import React from 'react'
 
-function CampingChoice() {
+function CampingChoice(props) {
   return (
       <div>
           <h1>CAMPING</h1>
       <section className='container'>
         <label htmlFor="select">Choose camping area</label>
         <select name="camping-area" id="camping-area">
-          <option value="valheim">Valheim</option>
-          <option value="jotunheim">Jotunheim</option>
-          <option value="alfheim">Alfheim</option>
+          {props.campingspots.map((spot) =>
+            <option value={spot.area}>{spot.area}</option>
+          )}
+          
         </select>
 
         <label htmlFor="select">Get a tent</label>
