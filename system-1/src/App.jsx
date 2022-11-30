@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Basket from './components/Basket'
 import CampingChoice from './components/CampingChoice'
 import PaymentInfo from './components/PaymentInfo'
@@ -7,6 +7,19 @@ import TicketChoice from './components/TicketChoice'
 
 function App() {
   const [cart, setCart] = useState([])
+
+  const [spots, setSpots] = useState([])
+
+  useEffect(() => {
+    async function getCampingData() {
+      const res = await fetch("http://localhost:8080/available-spots");
+      const data = await res.json();
+      setSpots(data);
+    }
+    getCampingData();
+    console.log(spots)
+  }, [])
+
 
   const tickets = [
     {
