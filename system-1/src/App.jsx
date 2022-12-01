@@ -19,7 +19,6 @@ function App() {
     getCampingData();
   }, [])
 
-
   const tickets = [
     {
       name: "Standard ticket",

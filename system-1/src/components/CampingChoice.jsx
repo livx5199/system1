@@ -1,12 +1,28 @@
 import React from 'react'
+import { useRef } from 'react'
+import {reserveSpot} from "../modules/database"
 
 function CampingChoice(props) {
+
+  const Spot = useRef(null)
+
+  function showSpots(e) {
+    e.preventDefault()
+
+    const campingArray = props.campingspots
+    const filter = campingArray.filter(campingspot => campingspot.area === Spot.current.value)
+    const payload = {area: filter[0].area, amount: 3}
+
+    console.log(payload)
+    reserveSpot(payload)
+  }
+
   return (
       <div>
           <h1>CAMPING</h1>
       <section className='container'>
         <label htmlFor="select">Choose camping area</label>
-        <select name="camping-area" id="camping-area">
+        <select ref={Spot} onChange={showSpots} name="camping-area" id="camping-area">
           {props.campingspots.map((spot) =>
             <option value={spot.area}>{spot.area}</option>
           )}
