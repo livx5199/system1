@@ -6,6 +6,7 @@ function CampingChoice(props) {
 
   const Spot = useRef(null)
 
+  //Takes chosen area and sends payload to reserveSpot (PUT-request)//
   function showSpots(e) {
     e.preventDefault()
 
@@ -13,7 +14,6 @@ function CampingChoice(props) {
     const filter = campingArray.filter(campingspot => campingspot.area === Spot.current.value)
     const payload = {area: filter[0].area, amount: 3}
 
-    console.log(payload)
     reserveSpot(payload)
   }
 
