@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import Basket from './components/Basket'
 import CampingChoice from './components/CampingChoice'
+import Checkout from './components/Checkout'
 import PaymentInfo from './components/PaymentInfo'
 import PersonalInfo from './components/PersonalInfo'
 import TicketChoice from './components/TicketChoice'
@@ -53,9 +54,7 @@ function App() {
 
       <Basket ticketchoices={tickets} cart={cart} />
 
-      <PersonalInfo/>
-
-      <PaymentInfo/>
+      <Checkout />
 
     </div>
   )

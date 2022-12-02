@@ -4,7 +4,6 @@ function PersonalInfo() {
 
   return (
     <section className='container'>
-      <form>
           
         <h4>Personal info</h4>
         <label htmlFor="fullname">Full name</label>
@@ -15,9 +14,7 @@ function PersonalInfo() {
         <input required type="text" name="adress" id="adress" placeholder='Street/floor/number' />
         <input required type="number" name="postal" id="postal" placeholder='Postal code' />
         <input required type="text" name="city" id="city" placeholder='City' />
-        <button>lol</button>
       
-      </form>
     </section>
   )
 }

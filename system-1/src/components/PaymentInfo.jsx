@@ -1,6 +1,13 @@
 import React from 'react'
+import {getReservationID} from "../modules/database"
 
 function PaymentInfo() {
+
+  function submit(e) {
+    e.preventDefault();
+    getReservationID()
+  }
+
   return (
     <div><section className="container">
     <h4>Payment info</h4>
@@ -40,7 +47,7 @@ function PaymentInfo() {
     <label htmlFor="sec-code">Security code</label>
     <input type="number" name="sec-code" id="sec-code" />
 
-    <button>Pay</button>
+    <button onClick={submit}>Pay</button>
 
   </section></div>
   )

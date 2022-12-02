@@ -1,6 +1,6 @@
 import React from 'react'
 import { useRef } from 'react'
-import {reserveSpot} from "../modules/database"
+import { reserveSpot } from "../modules/database"
 
 function CampingChoice(props) {
 
