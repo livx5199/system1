@@ -85,3 +85,8 @@ button:focus-visible {
   display: flex;
   justify-content: space-between;
 }
+
+.counter-container {
+  display: flex;
+  justify-content: space-between;
+}
