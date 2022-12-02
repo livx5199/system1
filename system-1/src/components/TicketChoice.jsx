@@ -11,7 +11,7 @@ function TicketChoice(props) {
         
         <label htmlFor="select">Choose ticket type</label>
           {props.ticketchoices.map((ticket) => 
-            <TicketButton data={ticket} key={ticket.id} addToCart={props.addToCart} />)}
+            <TicketButton data={ticket} key={ticket.id} addToCart={props.addToCart} removeFromCart={props.removeFromCart} />)}
 
         <h3>Total:</h3>
         <button>To camping reservations</button>

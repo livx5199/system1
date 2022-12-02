@@ -6,7 +6,11 @@ function TicketButton(props) {
   const [counter, setCounter] = useState(0);
 
   function add() {
-    setCounter(count => count + 1)
+    if (counter === 6) {
+      setCounter(count => count)
+    } else {
+      setCounter(count => count + 1)
+    }
     props.addToCart(props)
   }
   
@@ -16,6 +20,7 @@ function TicketButton(props) {
     } else {
       setCounter(count => count - 1)
     }
+    props.removeFromCart(props)
 
   }
     
