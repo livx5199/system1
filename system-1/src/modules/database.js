@@ -1,9 +1,6 @@
 import React from 'react'
 
-export function getReservationID(object) {
-    let ID = { "id": object }
-    fulfillReservation(ID)
-  }
+let theID;
 
 export function reserveSpot(payload) {
 
@@ -15,17 +12,18 @@ export function reserveSpot(payload) {
       })
       .then(response=>response.json())
         .then((answer) => {
-            console.log(answer)
-            getReservationID(answer.id);
+            console.log("response", answer)
+            theID = answer.id;
         })
 }
 
-export function fulfillReservation(payload) {
+export function fulfillReservation() {
+  const finalID = { id: `${ theID }`} 
 
     const options = {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(payload)
+        body: JSON.stringify(finalID)
       };
       
       fetch('http://localhost:8080/fullfill-reservation', options)

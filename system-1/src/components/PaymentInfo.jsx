@@ -1,11 +1,11 @@
 import React from 'react'
-import {getReservationID} from "../modules/database"
+import {fulfillReservation} from "../modules/database"
 
 function PaymentInfo() {
 
   function submit(e) {
     e.preventDefault();
-    getReservationID()
+    fulfillReservation();
   }
 
   return (
