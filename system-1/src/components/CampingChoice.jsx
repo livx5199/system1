@@ -2,19 +2,41 @@ import React from 'react'
 import { useRef } from 'react'
 import { reserveSpot } from "../modules/database"
 
+let message;
+
 function CampingChoice(props) {
 
   const Spot = useRef(null)
+  const campingArray = props.campingspots
+  const filter = campingArray.filter(campingspot => campingspot.area === Spot.current.value)
+  
 
   //Takes chosen area and sends payload to reserveSpot (PUT-request)//
   function showSpots(e) {
     e.preventDefault()
 
-    const campingArray = props.campingspots
-    const filter = campingArray.filter(campingspot => campingspot.area === Spot.current.value)
-    const payload = {area: filter[0].area, amount: 3}
+    const amountOfTickets = props.cart[0].amount + props.cart[1].amount
+    
+    const payload = { area: filter[0].area, amount: amountOfTickets }
 
     reserveSpot(payload)
+    console.log(props.campingspots)
+  }
+
+  function showAvailability() {
+
+    const amountOfTickets = props.cart[0].amount + props.cart[1].amount
+    
+    if (filter[0].available - amountOfTickets >= 0) {
+      return (
+        <p>Spots available</p>
+      )
+    } else {
+      return (
+        <p>Spots not available</p>
+      )
+    }
+
   }
 
   return (
@@ -22,12 +44,13 @@ function CampingChoice(props) {
           <h1>CAMPING</h1>
       <section className='container'>
         <label htmlFor="select">Choose camping area</label>
-        <select ref={Spot} onChange={showSpots} name="camping-area" id="camping-area">
+        <select onChange={showAvailability} ref={Spot} name="camping-area" id="camping-area">
           {props.campingspots.map((spot) =>
             <option value={spot.area}>{spot.area}</option>
           )}
           
         </select>
+        <p>Hello here is message: {message}</p>
 
         <label htmlFor="select">Get a tent</label>
         <select name="get-a-tent" id="get-a-tent">
@@ -38,7 +61,7 @@ function CampingChoice(props) {
         <label htmlFor="input">Add green camping (249,-)</label>
         <input type="radio" />
 
-        <button>To checkout</button>
+        <button onClick={showSpots}>To checkout</button>
       </section>
     </div>
   )

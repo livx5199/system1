@@ -1,12 +1,14 @@
 import React from 'react'
 import {fulfillReservation} from "../modules/database"
-
-function PaymentInfo() {
+  
+function PaymentInfo(props) {
 
   function submit(e) {
     e.preventDefault();
     fulfillReservation();
   }
+
+  
 
   return (
     <div><section className="container">

@@ -28,7 +28,7 @@ export function fulfillReservation() {
       
       fetch('http://localhost:8080/fullfill-reservation', options)
         .then(response => response.json())
-        .then(response => console.log(response))
+        .then(response => console.log("fulfillReservation", response))
         .catch(err => console.error(err));
 
 }

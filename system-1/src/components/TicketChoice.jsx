@@ -4,6 +4,17 @@ import TicketButton from './TicketButton';
 
 function TicketChoice(props) {
 
+
+
+  function submit(e) {
+    e.preventDefault();
+
+    if (props.cart.length === 0) {
+      console.log("You shall not pass")
+    }
+
+  }
+
   return (
       <div className='ticket-choice'>
           <h1>TICKETS</h1>
@@ -14,7 +25,7 @@ function TicketChoice(props) {
             <TicketButton data={ticket} key={ticket.id} addToCart={props.addToCart} removeFromCart={props.removeFromCart} />)}
 
         <h3>Total:</h3>
-        <button>To camping reservations</button>
+        <button onClick={submit}>To camping reservations</button>
       </section>
     </div>
   )

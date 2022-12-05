@@ -2,11 +2,11 @@ import React from 'react'
 import PaymentInfo from './PaymentInfo'
 import PersonalInfo from './PersonalInfo'
 
-function Checkout() {
+function Checkout(props) {
   return (
       <form action="">
           <PersonalInfo />
-          <PaymentInfo />
+      <PaymentInfo campingspots={props.campingspots} />
     </form>
   )
 }
