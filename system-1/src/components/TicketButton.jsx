@@ -1,10 +1,10 @@
 import React from 'react'
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 
 function TicketButton(props) {
-  console.log("props", props)
 
   const [counter, setCounter] = useState(0);
+
 
   function add() {
     if (counter === 6) {

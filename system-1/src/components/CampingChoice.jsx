@@ -59,7 +59,7 @@ function CampingChoice(props) {
 
         <label htmlFor="select">Get a tent</label>
           {props.getatents.map((tent) =>
-            <GetATentButton data={tent} key={tent.id} addToCart={props.addToCart} removeFromCart={props.removeFromCart}/>)}
+            <GetATentButton data={tent} ticketsincart={props.ticketsincart} key={tent.id} addToCart={props.addToCart} removeFromCart={props.removeFromCart}/>)}
 
         <label htmlFor="input">Add green camping (249,-)</label>
         <input onInput={addGreenCamping} type="radio" />

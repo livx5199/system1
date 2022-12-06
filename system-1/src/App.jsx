@@ -5,9 +5,27 @@ import Checkout from './components/Checkout'
 import TicketChoice from './components/TicketChoice'
 
 function App() {
+
   const [cart, setCart] = useState([])
 
   const [campingSpots, setCampingSpots] = useState([])
+
+  let filterVIPTickets;
+  if (cart.filter(item => item.name === "VIP ticket").length === 0) {
+    filterVIPTickets = 0;
+  } else {
+    filterVIPTickets = cart.filter(item => item.name === "VIP ticket")[0].amount
+  }
+
+  let filterStandardTickets;
+  if (cart.filter(item => item.name === "Standard ticket").length === 0) {
+    filterStandardTickets = 0;
+  } else {
+    filterStandardTickets = cart.filter(item => item.name === "Standard ticket")[0].amount
+  }
+
+  let ticketsInCart = filterStandardTickets + filterVIPTickets
+  console.log(ticketsInCart)
 
   useEffect(() => {
     async function getCampingData() {
@@ -46,6 +64,7 @@ function App() {
     price: 249,
     id: 5
   }
+  
   
   function addToCart(data) {
     if (cart.find((entry) => entry.id === data.data.id)) {

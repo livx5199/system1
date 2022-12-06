@@ -2,11 +2,10 @@ import React from 'react'
 import { useState } from 'react';
 
 function GetATentButton(props) {
-
     const [counter, setCounter] = useState(0);
 
     function add() {
-      if (counter === 6) {
+      if (counter === props.ticketsincart) {
         setCounter(count => count)
       } else {
         setCounter(count => count + 1)

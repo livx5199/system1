@@ -5,7 +5,6 @@ import TicketButton from './TicketButton';
 function TicketChoice(props) {
 
 
-
   function submit(e) {
     e.preventDefault();
 
