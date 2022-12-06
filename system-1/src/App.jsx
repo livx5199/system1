@@ -10,6 +10,7 @@ function App() {
 
   const [campingSpots, setCampingSpots] = useState([])
 
+  //Variable for total number of tickets reserved
   let filterVIPTickets;
   if (cart.filter(item => item.name === "VIP ticket").length === 0) {
     filterVIPTickets = 0;
@@ -25,7 +26,27 @@ function App() {
   }
 
   let ticketsInCart = filterStandardTickets + filterVIPTickets
-  console.log(ticketsInCart)
+
+  //Variable for total number of camping spots reserved
+  let filter2persTent;
+  if (cart.filter(item => item.name === "2 pers. tent").length === 0) {
+    filter2persTent = 0;
+  } else {
+    filter2persTent = cart.filter(item => item.name === "2 pers. tent")[0].amount
+  }
+
+  let filter3persTent;
+  if (cart.filter(item => item.name === "3 pers. tent").length === 0) {
+    filter3persTent = 0;
+  } else {
+    filter3persTent = cart.filter(item => item.name === "3 pers. tent")[0].amount
+  }
+
+  let spotsInCart = filter2persTent + filter3persTent
+  let amountOfPeople = (filter2persTent * 2) + (filter3persTent * 3)
+  console.log("amountOfPeople", amountOfPeople)
+  console.log("ticketsInCart", ticketsInCart)
+  
 
   useEffect(() => {
     async function getCampingData() {
@@ -51,11 +72,13 @@ function App() {
     {
       name: "2 pers. tent",
       price: 299,
-      id: 3
+      id: 3,
+      contains: 2
     }, {
       name: "3 pers. tent",
       price: 399,
-      id: 4
+      id: 4,
+      contains: 3
     }
   ];
 
@@ -108,7 +131,7 @@ function App() {
     <div className="App">
       <TicketChoice ticketchoices={tickets} cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} />
 
-      <CampingChoice data={greenCamping} getatents={getATents} campingspots={campingSpots} cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} />
+      <CampingChoice data={greenCamping} ticketsincart={ticketsInCart} getatents={getATents} spotsincart={spotsInCart} amountofpeople={amountOfPeople} campingspots={campingSpots} cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} />
 
       <Basket ticketchoices={tickets} cart={cart} />
 
