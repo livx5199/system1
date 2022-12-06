@@ -2,6 +2,7 @@ import React from 'react'
 import { useState } from 'react';
 
 function TicketButton(props) {
+  console.log("props", props)
 
   const [counter, setCounter] = useState(0);
 

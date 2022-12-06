@@ -27,7 +27,25 @@ function App() {
       name: "VIP ticket",
       price: 1299,
       id: 2
-    }];
+  }];
+  
+  const getATents = [
+    {
+      name: "2 pers. tent",
+      price: 299,
+      id: 3
+    }, {
+      name: "3 pers. tent",
+      price: 399,
+      id: 4
+    }
+  ];
+
+  const greenCamping = {
+    name: "Green Camping",
+    price: 249,
+    id: 5
+  }
   
   function addToCart(data) {
     if (cart.find((entry) => entry.id === data.data.id)) {
@@ -71,7 +89,7 @@ function App() {
     <div className="App">
       <TicketChoice ticketchoices={tickets} cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} />
 
-      <CampingChoice campingspots={campingSpots} cart={cart} />
+      <CampingChoice data={greenCamping} getatents={getATents} campingspots={campingSpots} cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} />
 
       <Basket ticketchoices={tickets} cart={cart} />
 

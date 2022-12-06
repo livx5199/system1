@@ -16,13 +16,20 @@ function Basket(props) {
           <h1>CHECKOUT</h1>
       <section className="container">
         <h3>Your order</h3>
-        <ul className="basket">
+        <div className="basket">
           {props.cart.map((item) => (
-            <li>{item.name} x {item.amount}, {item.price * item.amount},-</li>
+            <div className="list-item">
+            <p>- {item.name} x {item.amount}</p>
+              <p>{item.price * item.amount},-</p>
+            </div>
           ))} 
-          <li>Booking fee: 99,-</li>
-        </ul> 
-        <div className="total">
+          <div className="list-item">
+            <p>- Booking fee</p>
+            <p>99,-</p>
+          </div>
+
+        </div> 
+        <div className="list-item total">
           <h4>Total</h4>
           <h4>{getTotal()},-</h4>
         </div>

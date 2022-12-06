@@ -26,8 +26,6 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
 }
@@ -72,6 +70,9 @@ button:focus-visible {
 .container {
   display: flex;
   flex-direction: column;
+  padding: 3rem;
+  border: 2px solid whitesmoke;
+  width: 230px;
 }
 
 .App {
@@ -80,8 +81,13 @@ button:focus-visible {
   align-items: center;
 }
 
-.basket,
-.total {
+.basket {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.list-item {
   display: flex;
   justify-content: space-between;
 }
