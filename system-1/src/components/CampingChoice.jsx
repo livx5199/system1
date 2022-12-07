@@ -1,5 +1,5 @@
 import React from 'react'
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import { reserveSpot } from "../modules/database"
 import GetATentButton from './GetATentButton';
 
@@ -7,11 +7,19 @@ let message;
 
 function CampingChoice(props) {
 
+  const [checked, setChecked] = useState(false)
+  const toggleGreenCamping = () => {
+    setChecked(!checked);
+    if (checked === false) {
+      props.addToCart(props.data)
+    } else {
+      props.removeFromCart(props.data)
+    }
+  }
   const Spot = useRef(null)
   const campingArray = props.campingspots
   const filter = campingArray.filter(campingspot => campingspot.area === Spot.current.value)
   
-
   //Takes chosen area and sends payload to reserveSpot (PUT-request)//
   function showSpots(e) {
     e.preventDefault()
@@ -19,10 +27,15 @@ function CampingChoice(props) {
     const payload = { area: filter[0].area, amount: props.ticketsincart }
 
     reserveSpot(payload)
-  }
 
-  function addGreenCamping() {
-    props.addToCart(props)
+    const chosenArea = {
+        name: Spot.current.value,
+        amount: props.ticketsincart,
+        price: 0,
+        id: 6,
+    }
+    
+    props.addToCart(chosenArea)
   }
 
 
@@ -57,10 +70,10 @@ function CampingChoice(props) {
 
         <label htmlFor="select">Get a tent</label>
           {props.getatents.map((tent) =>
-            <GetATentButton data={tent} spotsincart={props.spotsincart} amountofpeople={props.amountofpeople} ticketsincart={props.ticketsincart} key={tent.id} addToCart={props.addToCart} removeFromCart={props.removeFromCart}/>)}
+            <GetATentButton data={tent} amountofpeople={props.amountofpeople} ticketsincart={props.ticketsincart} key={tent.id} addToCart={props.addToCart} removeFromCart={props.removeFromCart}/>)}
 
         <label htmlFor="input">Add green camping (249,-)</label>
-        <input onInput={addGreenCamping} type="radio" />
+        <input onChange={toggleGreenCamping} checked={checked} type="checkbox" />
 
         <button onClick={showSpots}>To checkout</button>
       </section>

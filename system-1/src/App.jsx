@@ -7,6 +7,7 @@ import TicketChoice from './components/TicketChoice'
 function App() {
 
   const [cart, setCart] = useState([])
+  console.log(cart)
 
   const [campingSpots, setCampingSpots] = useState([])
 
@@ -42,10 +43,7 @@ function App() {
     filter3persTent = cart.filter(item => item.name === "3 pers. tent")[0].amount
   }
 
-  let spotsInCart = filter2persTent + filter3persTent
   let amountOfPeople = (filter2persTent * 2) + (filter3persTent * 3)
-  console.log("amountOfPeople", amountOfPeople)
-  console.log("ticketsInCart", ticketsInCart)
   
 
   useEffect(() => {
@@ -88,11 +86,10 @@ function App() {
     id: 5
   }
   
-  
   function addToCart(data) {
-    if (cart.find((entry) => entry.id === data.data.id)) {
+    if (cart.find((entry) => entry.id === data.id)) {
       setCart(oldCart => oldCart.map(entry => {
-        if (entry.id !== data.data.id) {
+        if (entry.id !== data.id) {
           return entry
         }
         const copy = { ...entry };
@@ -104,38 +101,35 @@ function App() {
         return copy;
       }))
     } else {
-      setCart((oldCart) => oldCart.concat({ ...data.data, amount: 1 }));
+      setCart((oldCart) => oldCart.concat({ ...data, amount: 1 }));
     }
   }
 
   function removeFromCart(data) {
-    if (cart.find((entry) => entry.id === data.data.id)) {
-      setCart(oldCart => oldCart.map(entry => {
-        if (entry.id !== data.data.id) {
-          return entry
+    //find and modify a product
+    setCart(oldCart => {
+      const subtracted = oldCart.map(item => {
+        if (item.id === data.id) {
+          return {...item, amount:item.amount - 1}
         }
-        const copy = { ...entry };
-        if (copy.amount === 0) {
-          copy.amount = copy.amount
-        } else {
-          copy.amount = copy.amount - 1;
-        }
-        return copy;
-      }))
-    } else {
-      setCart((oldCart) => oldCart.concat({ ...data.data, amount: 1 }));
-    }
+        return item;
+      })
+
+      const filtered = subtracted.filter(item => item.amount > 0);
+      return filtered;
+
+    })
   }
 
   return (
     <div className="App">
       <TicketChoice ticketchoices={tickets} cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} />
 
-      <CampingChoice data={greenCamping} ticketsincart={ticketsInCart} getatents={getATents} spotsincart={spotsInCart} amountofpeople={amountOfPeople} campingspots={campingSpots} cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} />
+      <CampingChoice data={greenCamping} ticketsincart={ticketsInCart} getatents={getATents} amountofpeople={amountOfPeople} campingspots={campingSpots} cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} />
 
       <Basket ticketchoices={tickets} cart={cart} />
 
-      <Checkout/>
+      <Checkout cart={cart} />
 
     </div>
   )

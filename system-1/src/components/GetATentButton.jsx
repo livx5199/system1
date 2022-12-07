@@ -5,13 +5,12 @@ function GetATentButton(props) {
     const [counter, setCounter] = useState(0);
 
     function add() {
-        console.log(props.ticketsincart - props.amountofpeople)
       if ((props.ticketsincart - props.amountofpeople) <= 0) {
           setCounter(count => count)
           console.log("You can only reserve the amount of spots corresponding with amount of tickets")
       } else {
           setCounter(count => count + 1)
-          props.addToCart(props)
+          props.addToCart(props.data)
       }
       
     }
@@ -21,7 +20,7 @@ function GetATentButton(props) {
         setCounter(count => count)
       } else {
           setCounter(count => count - 1)
-          props.removeFromCart(props)
+          props.removeFromCart(props.data)
       }
       
   

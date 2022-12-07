@@ -8,8 +8,6 @@ function PaymentInfo(props) {
     fulfillReservation();
   }
 
-  
-
   return (
     <div><section className="container">
     <h4>Payment info</h4>

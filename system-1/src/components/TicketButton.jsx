@@ -12,7 +12,7 @@ function TicketButton(props) {
     } else {
       setCounter(count => count + 1)
     }
-    props.addToCart(props)
+    props.addToCart(props.data)
   }
   
   function subtract() {
@@ -21,7 +21,7 @@ function TicketButton(props) {
     } else {
       setCounter(count => count - 1)
     }
-    props.removeFromCart(props)
+    props.removeFromCart(props.data)
 
   }
     
