@@ -3,10 +3,10 @@ import PaymentInfo from './PaymentInfo'
 import PersonalInfo from './PersonalInfo'
 function Checkout(props) {
   return (
-      <form action="">
-      <PersonalInfo ticketsincart={props.cart} />
+      <>
+      <PersonalInfo totaltickets={props.totaltickets} />
       <PaymentInfo campingspots={props.campingspots} />
-    </form>
+    </>
   )
 }
 

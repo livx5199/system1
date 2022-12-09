@@ -6,10 +6,14 @@ import TicketChoice from './components/TicketChoice'
 
 function App() {
 
+  //Cart
   const [cart, setCart] = useState([])
-  console.log(cart)
 
+  //Camping spots
   const [campingSpots, setCampingSpots] = useState([])
+
+  //Standard ticket array for personal info
+  const [totalTickets, setTotalTickets] = useState([])
 
   //Variable for total number of tickets reserved
   let filterVIPTickets;
@@ -105,6 +109,14 @@ function App() {
     }
   }
 
+  function addToTicketArray(data) {
+    setTotalTickets(oldCart => oldCart.concat(data))
+  }
+
+  function removeFromTicketArray() {
+    setTotalTickets(oldCart => oldCart.slice(1))
+  }
+
   function removeFromCart(data) {
     //find and modify a product
     setCart(oldCart => {
@@ -123,13 +135,13 @@ function App() {
 
   return (
     <div className="App">
-      <TicketChoice ticketchoices={tickets} cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} />
+      <TicketChoice ticketchoices={tickets} addToTicketArray={addToTicketArray} removeFromTicketArray={removeFromTicketArray} cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} />
 
       <CampingChoice data={greenCamping} ticketsincart={ticketsInCart} getatents={getATents} amountofpeople={amountOfPeople} campingspots={campingSpots} cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} />
 
       <Basket ticketchoices={tickets} cart={cart} />
 
-      <Checkout cart={cart} />
+      <Checkout cart={cart} totaltickets={totalTickets} />
 
     </div>
   )

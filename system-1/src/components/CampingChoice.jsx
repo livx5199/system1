@@ -8,6 +8,11 @@ let message;
 function CampingChoice(props) {
 
   const [checked, setChecked] = useState(false)
+  const Spot = useRef(null)
+  const campingArray = props.campingspots
+  const filter = campingArray.filter(campingspot => campingspot.area === Spot.current.value)
+
+  //Add/remove Green Camping when checkbox is checked
   const toggleGreenCamping = () => {
     setChecked(!checked);
     if (checked === false) {
@@ -16,10 +21,7 @@ function CampingChoice(props) {
       props.removeFromCart(props.data)
     }
   }
-  const Spot = useRef(null)
-  const campingArray = props.campingspots
-  const filter = campingArray.filter(campingspot => campingspot.area === Spot.current.value)
-  
+
   //Takes chosen area and sends payload to reserveSpot (PUT-request)//
   function showSpots(e) {
     e.preventDefault()
@@ -55,6 +57,7 @@ function CampingChoice(props) {
 
   // }
 
+  //VIEW
   return (
       <div>
           <h1>CAMPING</h1>
@@ -62,7 +65,7 @@ function CampingChoice(props) {
         <label htmlFor="select">Choose camping area</label>
         <select ref={Spot} name="camping-area" id="camping-area">
           {props.campingspots.map((spot) =>
-            <option key={spot.id} value={spot.area}>{spot.area}</option>
+            <option key={spot.name} value={spot.area}>{spot.area}</option>
           )}
           
         </select>
@@ -70,7 +73,7 @@ function CampingChoice(props) {
 
         <label htmlFor="select">Get a tent</label>
           {props.getatents.map((tent) =>
-            <GetATentButton data={tent} amountofpeople={props.amountofpeople} ticketsincart={props.ticketsincart} key={tent.id} addToCart={props.addToCart} removeFromCart={props.removeFromCart}/>)}
+            <GetATentButton data={tent} amountofpeople={props.amountofpeople} ticketsincart={props.ticketsincart} key={tent.name} addToCart={props.addToCart} removeFromCart={props.removeFromCart}/>)}
 
         <label htmlFor="input">Add green camping (249,-)</label>
         <input onChange={toggleGreenCamping} checked={checked} type="checkbox" />

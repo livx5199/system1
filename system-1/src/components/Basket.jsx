@@ -18,7 +18,7 @@ function Basket(props) {
         <h3>Your order</h3>
         <div className="basket">
           {props.cart.map((item) => (
-            <div className="list-item">
+            <div key={item.id} className="list-item">
             <p>- {item.name} x {item.amount}</p>
               <p>{item.price * item.amount},-</p>
             </div>
