@@ -2,17 +2,19 @@ import React from 'react'
 import { useState } from 'react';
 
 function GetATentButton(props) {
-    const [counter, setCounter] = useState(0);
+  const [counter, setCounter] = useState(0);
+  const [message, setMessage] = useState("");
 
     function add() {
-      if ((props.ticketsincart - props.amountofpeople) <= 0) {
+      if (props.ticketsincart - (props.amountofpeople + props.data.contains) < 0) {
           setCounter(count => count)
-          console.log("You can only reserve the amount of spots corresponding with amount of tickets")
+          setMessage("Amount of tent space must be equal to number of tickets reserved")
       } else {
-          setCounter(count => count + 1)
+        setCounter(count => count + 1)
+        setMessage("")
           props.addToCart(props.data)
       }
-      
+ 
     }
     
     function subtract() {
@@ -32,8 +34,10 @@ function GetATentButton(props) {
     <div className="counter-container">
     <button onClick={subtract}>-</button>
     <h4>{counter}</h4>
-      <button onClick={add}>+</button>
-    </div>
+        <button onClick={add}>+</button>
+        
+      </div>
+      <p style={{ color: "red" }}>{message}</p>
   </>
   )
 }

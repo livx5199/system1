@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import Basket from './components/Basket'
 import CampingChoice from './components/CampingChoice'
 import Checkout from './components/Checkout'
+import Splash from './components/Splash'
 import TicketChoice from './components/TicketChoice'
 
 function App() {
@@ -135,11 +136,13 @@ function App() {
 
   return (
     <div className="App">
+      <Splash />
+
       <TicketChoice ticketchoices={tickets} addToTicketArray={addToTicketArray} removeFromTicketArray={removeFromTicketArray} cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} />
 
       <CampingChoice data={greenCamping} ticketsincart={ticketsInCart} getatents={getATents} amountofpeople={amountOfPeople} campingspots={campingSpots} cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} />
 
-      <Basket ticketchoices={tickets} cart={cart} />
+      <Basket ticketchoices={tickets} cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} />
 
       <Checkout cart={cart} totaltickets={totalTickets} />
 

@@ -1,12 +1,14 @@
 import React from 'react'
+import { Fragment } from 'react';
 import { useRef, useState } from 'react'
 import { reserveSpot } from "../modules/database"
 import GetATentButton from './GetATentButton';
 
-let message;
 
 function CampingChoice(props) {
 
+  const [message, setMessage] = useState("")
+  const [style, setStyle] = useState({})
   const [checked, setChecked] = useState(false)
   const Spot = useRef(null)
   const campingArray = props.campingspots
@@ -41,21 +43,28 @@ function CampingChoice(props) {
   }
 
 
-  // function showAvailability() {
+  function showAvailability() {
 
-  //   const amountOfTickets = props.cart[0].amount + props.cart[1].amount
+    let amountOfTickets;
+
+    if (props.cart.amount === 0) {
+      amountOfTickets = 0;
+    } else if (props.cart.amount === 1) {
+      amountOfTickets = props.cart[0].amount
+    } else {
+      amountOfTickets = props.cart[0].amount + props.cart[1].amount
+    }
     
-  //   if (filter[0].available - amountOfTickets >= 0) {
-  //     return (
-  //       <p>Spots available</p>
-  //     )
-  //   } else {
-  //     return (
-  //       <p>Spots not available</p>
-  //     )
-  //   }
+    if (filter[0].available - amountOfTickets >= 0) {
+      setMessage("Spots available")
+      setStyle({color: "green"})
+    } else {
+      setMessage("Spots not available")
+      setStyle({color: "red"})
+    }
 
-  // }
+  }
+  console.log(style)
 
   //VIEW
   return (
@@ -63,13 +72,13 @@ function CampingChoice(props) {
           <h1>CAMPING</h1>
       <section className='container'>
         <label htmlFor="select">Choose camping area</label>
-        <select ref={Spot} name="camping-area" id="camping-area">
+        <select required onChange={showAvailability} ref={Spot} name="camping-area" id="camping-area">
           {props.campingspots.map((spot) =>
             <option key={spot.name} value={spot.area}>{spot.area}</option>
           )}
           
         </select>
-        <p>Hello here is message: {message}</p>
+        <p style={style}>{message}</p>
 
         <label htmlFor="select">Get a tent</label>
           {props.getatents.map((tent) =>

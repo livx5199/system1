@@ -75,7 +75,8 @@ button:focus-visible {
   width: 230px;
 }
 
-.App {
+.App,
+.splash {
   display: flex;
   flex-direction: column;
   align-items: center;
