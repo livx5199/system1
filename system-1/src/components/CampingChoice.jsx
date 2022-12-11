@@ -43,6 +43,7 @@ function CampingChoice(props) {
   }
 
 
+  //Change "message" by availability of chosen spot
   function showAvailability() {
 
     let amountOfTickets;
@@ -64,7 +65,6 @@ function CampingChoice(props) {
     }
 
   }
-  console.log(style)
 
   //VIEW
   return (

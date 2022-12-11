@@ -1,17 +1,19 @@
 import React from 'react'
-import {useRef} from 'react'
+import {useState} from 'react'
 import TicketButton from './TicketButton';
 
 function TicketChoice(props) {
 
+  const [message, setMessage] = useState("")
 
   function submit(e) {
     e.preventDefault();
 
     if (props.cart.length === 0) {
-      console.log("You shall not pass")
+      setMessage("You must choose min. 1 ticket to proceed")
+    } else {
+      setMessage("")
     }
-
   }
 
   return (
@@ -25,6 +27,7 @@ function TicketChoice(props) {
 
         <h3>Total:</h3>
         <button onClick={submit}>To camping reservations</button>
+        <p style={{ color: "red" }}>{message}</p>
       </section>
     </div>
   )

@@ -5,6 +5,7 @@ function GetATentButton(props) {
   const [counter, setCounter] = useState(0);
   const [message, setMessage] = useState("");
 
+  //Makes sure the "contains" property in the wanted tent-option corresponds with amount of tickets - If yes, addToBasket
     function add() {
       if (props.ticketsincart - (props.amountofpeople + props.data.contains) < 0) {
           setCounter(count => count)
@@ -25,7 +26,7 @@ function GetATentButton(props) {
           props.removeFromCart(props.data)
       }
       
-  
+      setMessage("");
     }
 
   return (

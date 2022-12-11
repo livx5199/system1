@@ -32,6 +32,7 @@ function App() {
   }
 
   let ticketsInCart = filterStandardTickets + filterVIPTickets
+  console.log(cart)
 
   //Variable for total number of camping spots reserved
   let filter2persTent;

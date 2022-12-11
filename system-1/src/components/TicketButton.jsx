@@ -4,11 +4,13 @@ import { useState, useRef } from 'react';
 function TicketButton(props) {
 
   const [counter, setCounter] = useState(0);
+  const [message, setMessage] = useState("");
 
 
   function add() {
     if (counter === 6) {
       setCounter(count => count)
+      setMessage("You can max. choose 6 of each ticket")
     } else {
       setCounter(count => count + 1)
     }
@@ -22,6 +24,7 @@ function TicketButton(props) {
     } else {
       setCounter(count => count - 1)
     }
+    setMessage("")
     props.removeFromCart(props.data)
     props.removeFromTicketArray()
   }
@@ -34,6 +37,7 @@ function TicketButton(props) {
       <h4>{counter}</h4>
         <button onClick={add}>+</button>
       </div>
+      <p style={{ color: "red" }}>{message}</p>
     </>
   )
 }
