@@ -13,6 +13,25 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+
+  --primary-color-one: #F9DB8B;
+  --primary-color-two: #FFA394;
+  --primary-color-three: #161B4B;
+  --accent-color-one: #1D3786;
+  --accent-color-two: #DB675B;
+
+}
+
+h1, h2, h3, h4, p {
+  color: var(--primary-color-three);
+}
+
+h2 {
+  font-size: 2.3rem;
+}
+
+h3 {
+  font-size: 1.6rem;
 }
 
 a {
@@ -28,6 +47,7 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
+  background-color: var(--primary-color-one);
 }
 
 h1 {
@@ -36,18 +56,17 @@ h1 {
 }
 
 button {
-  border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: var(--accent-color-two);
   cursor: pointer;
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  background-color: var(--primary-color-two);
 }
 button:focus,
 button:focus-visible {
@@ -71,15 +90,20 @@ button:focus-visible {
   display: flex;
   flex-direction: column;
   padding: 3rem;
-  border: 2px solid whitesmoke;
-  width: 230px;
+  background-color: white;
+  border-radius: 5px;
+  width: 80%;
+  text-align: center;
 }
 
-.App,
-.splash {
+.splash, .App {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+label {
+  color: var(--primary-color-three);
 }
 
 .basket {
@@ -96,4 +120,52 @@ button:focus-visible {
 .counter-container {
   display: flex;
   justify-content: space-between;
+}
+
+input, select {
+  background-color: var(--accent-color-two);
+  border-color: var(--primary-color-two);
+  border-style: none;
+  padding: 1rem;
+  font-size: 1rem;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  background-color: var(--primary-color-two);
+  width: 100%;
+  
+  .header-logo {
+    max-width: 10%;
+  }
+
+}
+
+
+/*SPLASH-SECTION*/
+
+.slider-text {
+  background-color: white;
+  width: 100%;
+  
+  p {
+    font-weight: bold;
+  }
+}
+
+.splash {
+  text-align: center;
+
+  .mosaic-splash {
+    max-width: 80%;
+  }
+}
+
+/*PERSONAL INFO SECTION*/
+
+.form {
+  display: flex;
+  flex-direction: column;
 }

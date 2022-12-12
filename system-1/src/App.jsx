@@ -4,6 +4,8 @@ import CampingChoice from './components/CampingChoice'
 import Checkout from './components/Checkout'
 import Splash from './components/Splash'
 import TicketChoice from './components/TicketChoice'
+import Header from './components/Header'
+import SliderText from './components/SliderText'
 
 function App() {
 
@@ -137,6 +139,10 @@ function App() {
 
   return (
     <div className="App">
+      <Header />
+
+      <SliderText />
+
       <Splash />
 
       <TicketChoice ticketchoices={tickets} addToTicketArray={addToTicketArray} removeFromTicketArray={removeFromTicketArray} cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} />

@@ -33,7 +33,7 @@ function PersonalInfo(props) {
           
       <h4>Personal info</h4>
 
-      <form ref={theForm}>
+      <form className='form' ref={theForm}>
         {amountOfStandardTickets.map(ticket => {
           return(<>
             <h4>Participant info: {ticket.name}</h4>
