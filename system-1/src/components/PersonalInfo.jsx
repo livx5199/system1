@@ -13,9 +13,21 @@ function PersonalInfo(props) {
   //Clicking "To payment" button: Inserting form-data into the API
   function submit(e) {
     e.preventDefault()
+
+    let basketValue;
     const persons = theForm.current.querySelectorAll(".ticket")
     const ticketInfo = [];
+
+    //Making an object from the input data to send to ticketInfo array
     persons.forEach(person => {
+
+      //Setting value of the basket
+      if (person.querySelector('.radio').checked) {
+        basketValue = props.cart;
+      } else {
+        basketValue = null;
+      }
+
       const obj = {
       typeofticket: person.querySelector(".typeofticket").innerText,
       name: person.querySelector('.fullname').value,
@@ -23,22 +35,23 @@ function PersonalInfo(props) {
       address: person.querySelector('.address').value,
       postal: person.querySelector('.postal').value,
       city: person.querySelector('.city').value,
+      basket: basketValue
     }
     ticketInfo.push(obj)
     })
-    console.log(ticketInfo)
 
-    // ticketInfo.forEach(ticket => {
-    //   console.log("submitting")
+    //Inserting values from ticketInfo and sending them as payload to insertOrder
+    ticketInfo.forEach(ticket => {
 
-    // insertOrder({
-    //   fullname: ticket.name,
-    //   email: ticket.email,
-    //   address: ticket.address,
-    //   postal: ticket.postal,
-    //   city: ticket.city,
-    //   basket: props.cart
-    // })})
+      insertOrder({
+      typeofticket: ticket.typeofticket,
+      fullname: ticket.name,
+      email: ticket.email,
+      address: ticket.address,
+      postal: ticket.postal,
+      city: ticket.city,
+      basket: ticket.basket
+    })})
     
   }
 
@@ -52,6 +65,8 @@ function PersonalInfo(props) {
         {amountOfStandardTickets.map(ticket => {
           return (<div className='ticket'>
             <h4 className="typeofticket">Participant info: {ticket.name}</h4>
+            <label htmlFor="radio">This is my ticket</label>
+            <input className='radio' name="radio" type="radio" />
             <label htmlFor="fullname">Full name</label>
             <input required type="text" name="fullname" className='fullname' />
             <label htmlFor="email">E-mail</label>
@@ -67,6 +82,8 @@ function PersonalInfo(props) {
         {amountOfVIPTickets.map(ticket => {
           return(<div className='ticket'>
             <h4 className="typeofticket">Participant info: {ticket.name}</h4>
+            <label htmlFor="radio">This is my ticket</label>
+            <input className='radio' name="radio" type="radio" />
             <label htmlFor="fullname">Full name</label>
             <input required type="text" name='fullname' className='fullname' />
             <label htmlFor="email">E-mail</label>
