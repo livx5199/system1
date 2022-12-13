@@ -2,9 +2,14 @@ import React from 'react'
 
 function SliderText() {
   return (
-    <div className='slider-text'>
-        <p>Creative workshops · social dining every day · speed-friending · games · dance workshops · your mom would love this</p>
+    <div className="marquee-container">
+      <div className="marquee marquee-text-one">
+        <p>Social dining · Speed-friending · Workshops · Board game stations · Competitions ·</p>
       </div>
+      <div className="marquee marquee-text-two">
+        <p> Social dining · Speed-friending · Workshops · Board game stations · Competitions ·</p>
+      </div>
+    </div>
   )
 }
 

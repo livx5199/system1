@@ -63,36 +63,33 @@ function App() {
     getCampingData();
   }, [])
 
-  const tickets = [
-    {
-      name: "Standard ticket",
-      price: 799,
-      id: 1
-    }, {
-      name: "VIP ticket",
-      price: 1299,
-      id: 2
-  }];
-  
-  const getATents = [
-    {
-      name: "2 pers. tent",
-      price: 299,
-      id: 3,
-      contains: 2
-    }, {
-      name: "3 pers. tent",
-      price: 399,
-      id: 4,
-      contains: 3
+  //Creates a template for objects
+  class objectTemplate {
+    constructor(name, price, id, contains) {
+      this.name = name;
+      this.price = price;
+      this.id = id;
+      this.contains = contains;
     }
-  ];
-
-  const greenCamping = {
-    name: "Green Camping",
-    price: 249,
-    id: 5
   }
+
+  //Creating ticket-array, making the objects based on the objectTemplate class and pushes them to the array
+  const tickets = [];
+
+  const standardTicket = new objectTemplate("Standard ticket", 799, 1, null)
+  const VIPTicket = new objectTemplate("VIP ticket", 1299, 2, null)
+  tickets.push(standardTicket, VIPTicket)
+
+  //Same with get-a-tent
+  const getATents = [];
+
+  const twoPersTent = new objectTemplate("2 pers. tent", 299, 3, 2)
+  const threePersTent = new objectTemplate("3 pers. tent", 399, 4, 3)
+  getATents.push(twoPersTent, threePersTent)
+
+  //Creating an object for Green Camping option
+  const greenCamping = new objectTemplate("Green Camping", 249, 5, null)
+  
   
   function addToCart(data) {
     if (cart.find((entry) => entry.id === data.id)) {

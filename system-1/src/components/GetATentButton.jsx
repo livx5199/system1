@@ -15,7 +15,6 @@ function GetATentButton(props) {
         setMessage("")
           props.addToCart(props.data)
       }
- 
     }
     
     function subtract() {
