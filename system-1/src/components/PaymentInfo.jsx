@@ -5,7 +5,7 @@ function PaymentInfo(props) {
 
   function submit(e) {
     e.preventDefault();
-    fulfillReservation();
+    fulfillReservation(props.istimedout);
 
     // Inserting values from ticketInfo and sending them as payload to insertOrder
     props.ticketinfo.forEach(ticket => {

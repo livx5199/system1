@@ -26,6 +26,8 @@ function App() {
 
   let ticketInfo = [];
 
+  let isTimedout = false;
+
   //Variable for total number of tickets reserved
   let filterVIPTickets;
   if (cart.filter(item => item.name === "VIP ticket").length === 0) {
@@ -156,7 +158,7 @@ function App() {
 
       <Basket ticketchoices={tickets} cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} />
 
-      <Checkout cart={cart} ticketinfo={ticketInfo} totaltickets={totalTickets} />
+      <Checkout cart={cart} ticketinfo={ticketInfo} totaltickets={totalTickets} istimedout={isTimedout} />
 
       <ThankYou cart={cart} />
       

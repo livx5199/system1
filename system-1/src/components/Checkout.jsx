@@ -18,7 +18,7 @@ function Checkout(props) {
   return (
       <>
       <PersonalInfo totaltickets={props.totaltickets} cart={props.cart} ticketinfo={props.ticketinfo} personobject={personObject} />
-      <PaymentInfo campingspots={props.campingspots} ticketinfo={props.ticketinfo} personobject={personObject}/>
+      <PaymentInfo campingspots={props.campingspots} ticketinfo={props.ticketinfo} personobject={personObject} istimedout={props.istimedout} />
     </>
   )
 }

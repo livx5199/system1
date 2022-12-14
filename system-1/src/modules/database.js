@@ -17,8 +17,9 @@ export function reserveSpot(payload) {
         })
 }
 
-export function fulfillReservation() {
-  const finalID = { id: `${ theID }`} 
+export function fulfillReservation(istimedout) {
+  const finalID = { id: `${theID}` } 
+  
 
     const options = {
         method: 'POST',
@@ -28,7 +29,15 @@ export function fulfillReservation() {
       
       fetch('http://localhost:8080/fullfill-reservation', options)
         .then(response => response.json())
-        .then(response => console.log("fulfillReservation", response))
+        .then((response) => {
+          console.log("fulfillReservation", response)
+          if (response.message === "ID not found") {
+            istimedout = true;
+          } else {
+            istimedout = false;
+          }
+          console.log(istimedout);
+        })
         .catch(err => console.error(err));
 
 }
