@@ -5,7 +5,6 @@ import { useRef } from 'react'
 function PersonalInfo(props) {
 
   const theForm = useRef(null)
-
   //The amount of tickets in cart
   let amountOfStandardTickets = props.totaltickets.filter(item => item.name === "Standard ticket")
   let amountOfVIPTickets = props.totaltickets.filter(item => item.name === "VIP ticket")
@@ -28,7 +27,7 @@ function PersonalInfo(props) {
 
     let basketValue;
     const persons = theForm.current.querySelectorAll(".ticket")
-    const ticketInfo = [];
+    
 
     //Making an object from the input data to send to ticketInfo array
     persons.forEach(person => {
@@ -40,7 +39,7 @@ function PersonalInfo(props) {
         basketValue = null;
       }
 
-      let obj = new personObject(
+      let obj = new props.personobject(
         person.querySelector(".typeofticket").innerText,
         person.querySelector('.fullname').value,
         person.querySelector('.email').value,
@@ -49,24 +48,9 @@ function PersonalInfo(props) {
         person.querySelector('.city').value,
         basketValue
       )
-    ticketInfo.push(obj)
+      props.ticketinfo.push(obj)
     })
-
-    //Inserting values from ticketInfo and sending them as payload to insertOrder
-    ticketInfo.forEach(ticket => {
-
-      let obj = new personObject(
-        ticket.typeofticket,
-        ticket.fullname,
-        ticket.email,
-        ticket.address,
-        ticket.postal,
-        ticket.city,
-        ticket.basket
-      )
-
-      insertOrder(obj)})
-    
+    console.log(props.ticketinfo)
   }
 
   //VIEW
@@ -99,25 +83,34 @@ function PersonalInfo(props) {
               <input required type="text" name="postal" className="postal" placeholder='Postal code' />
               <input required type="text" name="city" className="city" placeholder='City' />
           
-          </div>)
+            </div>
+          )
         })}
 
         {amountOfVIPTickets.map(ticket => {
           return (
             <div className='ticket'>
-            <h3 className="typeofticket">Participant info: {ticket.name}</h3>
-            <label htmlFor="radio">This is my ticket</label>
-            <input className='radio' name="radio" type="radio" />
-            <label htmlFor="fullname">Full name</label>
-            <input required type="text" name='fullname' className='fullname' />
-            <label htmlFor="email">E-mail</label>
-            <input required type="email" name='email' className='email' />
-            <label htmlFor="adress">Address</label>
-            <input required type="text" name="address" className="address" placeholder='Street/floor/number' />
-            <input required type="text" name="postal" className="postal" placeholder='Postal code' />
-            <input required type="text" name="city" className="city" placeholder='City' />
+
+              <h3 className="typeofticket">Participant info: {ticket.name}</h3>
+              
+              <div className="radio-button">
+                <input className='radio' name="radio" type="radio" />
+                <label htmlFor="radio">This is my ticket</label>
+              </div>
+              
+              <label htmlFor="fullname">Full name</label>
+              <input required type="text" name="fullname" className='fullname' />
+              
+              <label htmlFor="email">E-mail</label>
+              <input required type="email" name='email' className='email' />
+              
+              <label htmlFor="adress">Address</label>
+              <input required type="text" name="address" className="address" placeholder='Street/floor/number' />
+              <input required type="text" name="postal" className="postal" placeholder='Postal code' />
+              <input required type="text" name="city" className="city" placeholder='City' />
           
-          </div>)
+            </div>
+          )
         })}
         <button>To payment</button>
         </form>

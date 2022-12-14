@@ -71,6 +71,7 @@ function CampingChoice(props) {
       <div>
           <h1>CAMPING</h1>
       <section className='container'>
+        <h3>Where do you want to camp?</h3>
         <label htmlFor="select">Choose camping area</label>
         <select required onChange={showAvailability} ref={Spot} name="camping-area" id="camping-area">
           {props.campingspots.map((spot) =>
@@ -80,7 +81,8 @@ function CampingChoice(props) {
         </select>
         <p style={style}>{message}</p>
 
-        <label htmlFor="select">Get a tent</label>
+        <h3>Get a tent</h3>
+        <p>Wanna ease your travellings? We have a solution! Add our tent-package and we will set up a cozy Thinsburg-tent at your preferred spot - ready for your arrival.</p>
           {props.getatents.map((tent) =>
             <GetATentButton data={tent} amountofpeople={props.amountofpeople} ticketsincart={props.ticketsincart} key={tent.name} addToCart={props.addToCart} removeFromCart={props.removeFromCart}/>)}
 

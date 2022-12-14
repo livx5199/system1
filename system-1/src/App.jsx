@@ -9,6 +9,9 @@ import SliderText from './components/SliderText'
 
 function App() {
 
+  const localUrl = "http://localhost:8080/available-spots"
+  const flyUrl = "https://foofestdatabase.fly.dev/available-spots"
+
   //Cart
   const [cart, setCart] = useState([])
 
@@ -17,6 +20,8 @@ function App() {
 
   //Standard ticket array for personal info
   const [totalTickets, setTotalTickets] = useState([])
+
+  let ticketInfo = [];
 
   //Variable for total number of tickets reserved
   let filterVIPTickets;
@@ -56,7 +61,7 @@ function App() {
 
   useEffect(() => {
     async function getCampingData() {
-      const res = await fetch("http://localhost:8080/available-spots");
+      const res = await fetch(localUrl);
       const data = await res.json();
       setCampingSpots(data);
     }
@@ -148,7 +153,7 @@ function App() {
 
       <Basket ticketchoices={tickets} cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} />
 
-      <Checkout cart={cart} totaltickets={totalTickets} />
+      <Checkout cart={cart} ticketinfo={ticketInfo} totaltickets={totalTickets} />
 
     </div>
   )

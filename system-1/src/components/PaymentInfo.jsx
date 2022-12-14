@@ -1,11 +1,26 @@
 import React from 'react'
-import {fulfillReservation} from "../modules/database"
+import {fulfillReservation, insertOrder} from "../modules/database"
   
 function PaymentInfo(props) {
 
   function submit(e) {
     e.preventDefault();
     fulfillReservation();
+
+    // Inserting values from ticketInfo and sending them as payload to insertOrder
+    props.ticketinfo.forEach(ticket => {
+
+      let obj = new props.personobject(
+        ticket.typeofticket,
+        ticket.fullname,
+        ticket.email,
+        ticket.address,
+        ticket.postal,
+        ticket.city,
+        ticket.basket
+      )
+
+      insertOrder(obj)})
   }
 
   return (
