@@ -6,6 +6,9 @@ import Splash from './components/Splash'
 import TicketChoice from './components/TicketChoice'
 import Header from './components/Header'
 import SliderText from './components/SliderText'
+import ThankYou from './components/ThankYou'
+import Timeout from './components/Timeout'
+import Footer from './components/Footer'
 
 function App() {
 
@@ -154,6 +157,12 @@ function App() {
       <Basket ticketchoices={tickets} cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} />
 
       <Checkout cart={cart} ticketinfo={ticketInfo} totaltickets={totalTickets} />
+
+      <ThankYou />
+      
+      <Timeout />
+      
+      <Footer />
 
     </div>
   )
