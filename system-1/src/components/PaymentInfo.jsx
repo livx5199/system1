@@ -25,12 +25,13 @@ function PaymentInfo(props) {
 
   return (
     <form onSubmit={submit}><section className="container">
-    <h4>Payment info</h4>
+    <h3>Payment info</h3>
     <label htmlFor="credit-card-number">Credit card number</label>
     <input required type="number" name="credit-card-number" id="credit-card-number" />
 
     <div className="exp-date">
-    <label htmlFor="exp-date">Expiration date</label>
+        <label htmlFor="exp-date">Expiration date</label>
+        <div className="exp-date-select">
     <select required name="exp-date" id="exp-date">
       <option value="exp-1">1</option>
       <option value="exp-2">2</option>
@@ -56,7 +57,8 @@ function PaymentInfo(props) {
       <option value="exp-24">24</option>
       <option value="exp-23">23</option>
         <option value="exp-22">22</option>
-      </select>
+          </select>
+          </div>
     </div>
 
     <label htmlFor="sec-code">Security code</label>

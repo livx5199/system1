@@ -22,7 +22,6 @@ function Basket(props) {
             <div key={item.id} className="list-item">
             <p>- {item.name} x {item.amount}</p>
               <p>{item.price * item.amount},-</p>
-              <BasketButton item={item} addToCart={props.addToCart} removeFromCart={props.removeFromCart}/>
             </div>
           ))} 
           <div className="list-item">

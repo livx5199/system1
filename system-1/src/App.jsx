@@ -158,7 +158,7 @@ function App() {
 
       <Checkout cart={cart} ticketinfo={ticketInfo} totaltickets={totalTickets} />
 
-      <ThankYou />
+      <ThankYou cart={cart} />
       
       <Timeout />
       
