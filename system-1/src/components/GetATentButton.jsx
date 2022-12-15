@@ -30,7 +30,7 @@ function GetATentButton(props) {
 
   return (
     <>
-    <h3>{props.data.name} ({props.data.price},-)</h3>
+    <h4 className='gat-button-h4'>{props.data.name} ({props.data.price},-)</h4>
     <div className="counter-container">
     <button onClick={subtract}>-</button>
     <h4>{counter}</h4>

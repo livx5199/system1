@@ -22,7 +22,7 @@ function TicketChoice(props) {
 
   return (
       <div className='ticket-choice'>
-          <h1>TICKETS</h1>
+          <h1 className='section-h1'>TICKETS</h1>
       <section className='container'>
         
         <label htmlFor="select">Choose ticket type</label>

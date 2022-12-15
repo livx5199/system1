@@ -52,8 +52,9 @@ body {
 }
 
 h1 {
-  font-size: 3.2em;
+  font-size: 2.5rem;
   line-height: 1.1;
+  text-align: center;
 }
 
 button {
@@ -96,6 +97,10 @@ button:focus-visible {
   width: 300px;
   text-align: center;
   margin-bottom: 2rem;
+
+  @media (max-width: 500px) {
+    width: 230px;
+ }
 }
 
 .splash, .App {
@@ -106,6 +111,10 @@ button:focus-visible {
 
 label {
   color: var(--primary-color-three);
+}
+
+.section-h1 {
+  margin-top: 2rem;
 }
 
 .basket {
@@ -134,15 +143,24 @@ input, select {
   accent-color: var(--primary-color-three);
 }
 
+/*HEADER*/
+
 header {
   display: flex;
   justify-content: space-between;
   padding: 1rem;
+  padding-left: 1rem;
   background-color: var(--primary-color-two);
   width: 100%;
+  align-items: center;
   
   .header-logo {
-    max-width: 10%;
+    max-width: 80px;
+    padding-left: 1rem;
+  }
+
+  p {
+    font-weight: bolder;
   }
 
 }
@@ -202,9 +220,36 @@ input, select {
 
 .splash {
   text-align: center;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 
   .mosaic-splash {
-    max-width: 80%;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+
+    @media (max-width: 500px) {
+      max-width: 90%;
+    }
+  }
+
+  @media (max-width: 500px) {
+     h1 {
+    font-size: 2.4rem;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+    font-weight: 500;
+  } 
+
+  h4 {
+    font-size: 1.5rem;
+  }
+    
   }
 }
 
@@ -221,6 +266,22 @@ input, select {
     height: 50px;
     font-weight: bolder;
   }
+}
+
+/*CAMPING CHOICE SECTION*/
+
+.green-camping {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+/*GET-A-TENT BUTTON*/
+
+.gat-button-h4 {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
 }
 
 /*BASKET SECTION*/

@@ -72,7 +72,7 @@ function CampingChoice(props) {
   //VIEW
   return (
       <div>
-          <h1>CAMPING</h1>
+          <h1 className='section-h1'>CAMPING</h1>
       <section className='container'>
         <h3>Where do you want to camp?</h3>
         <label htmlFor="select">Choose camping area</label>
@@ -89,8 +89,11 @@ function CampingChoice(props) {
           {props.getatents.map((tent) =>
             <GetATentButton data={tent} amountofpeople={props.amountofpeople} ticketsincart={props.ticketsincart} key={tent.name} addToCart={props.addToCart} removeFromCart={props.removeFromCart}/>)}
 
+        <div className="green-camping">
+        <h3>Green camping</h3>
         <label htmlFor="input">Add green camping (249,-)</label>
-        <input onChange={toggleGreenCamping} checked={checked} type="checkbox" />
+          <input onChange={toggleGreenCamping} checked={checked} type="checkbox" />
+        </div>
 
         <button onClick={showSpots}>To checkout</button>
       </section>
