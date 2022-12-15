@@ -12,7 +12,6 @@ function CampingChoice(props) {
   const [checked, setChecked] = useState(false)
   const Spot = useRef(null)
   const campingArray = props.campingspots
-  const filter = campingArray.filter(campingspot => campingspot.area === Spot.current.value)
 
   //Add/remove Green Camping when checkbox is checked
   const toggleGreenCamping = () => {
@@ -28,6 +27,7 @@ function CampingChoice(props) {
   function showSpots(e) {
     e.preventDefault()
     
+    const filter = campingArray.filter(campingspot => campingspot.area === Spot.current.value)
     const payload = { area: filter[0].area, amount: props.ticketsincart }
 
     reserveSpot(payload)
@@ -40,6 +40,8 @@ function CampingChoice(props) {
     }
     
     props.addToCart(chosenArea)
+    props.setShowBasket(true)
+    props.setShowCampingChoice(false)
   }
 
 
@@ -47,6 +49,7 @@ function CampingChoice(props) {
   function showAvailability() {
 
     let amountOfTickets;
+    const filter = campingArray.filter(campingspot => campingspot.area === Spot.current.value)
 
     if (props.cart.amount === 0) {
       amountOfTickets = 0;

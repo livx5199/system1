@@ -1,27 +1,58 @@
 import React from 'react'
-import {fulfillReservation, insertOrder} from "../modules/database"
+import { fulfillReservation, insertOrder } from "../modules/database"
   
 function PaymentInfo(props) {
 
+
   function submit(e) {
     e.preventDefault();
-    fulfillReservation(props.istimedout);
 
-    // Inserting values from ticketInfo and sending them as payload to insertOrder
-    props.ticketinfo.forEach(ticket => {
-
-      let obj = new props.personobject(
-        ticket.typeofticket,
-        ticket.fullname,
-        ticket.email,
-        ticket.address,
-        ticket.postal,
-        ticket.city,
-        ticket.basket
-      )
-
-      insertOrder(obj)})
+    fulfillReservation().then(data => {
+      const dataMessage = data.message;
+      prepareUserToSend(dataMessage)
+    });
   }
+
+  function prepareUserToSend(data) {
+
+    let isTimedOut;
+
+    if (data === "ID not found") {
+      isTimedOut = true;
+    } else {
+      isTimedOut = false;
+    }
+
+    if (isTimedOut === true) {
+      console.log(isTimedOut)
+      props.setShowTimeout(true)
+      props.setShowPaymentInfo(false)
+    } else {
+      console.log(isTimedOut)
+      props.setShowThankYou(true)
+      props.setShowPaymentInfo(false)
+
+      props.ticketinfo.forEach(ticket => {
+        
+        // Inserting values from ticketInfo and sending them as payload to insertOrder
+        let obj = new props.personobject(
+          ticket.typeofticket,
+          ticket.fullname,
+          ticket.email,
+          ticket.address,
+          ticket.postal,
+          ticket.city,
+          ticket.basket
+        )
+  
+        insertOrder(obj)
+      })
+    }
+
+  }
+
+
+
 
   return (
     <form onSubmit={submit}><section className="container">

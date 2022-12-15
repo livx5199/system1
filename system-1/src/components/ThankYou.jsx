@@ -37,7 +37,7 @@ function ThankYou(props) {
         </div>
           </div>
 
-          <button>To front page</button>
+          <button onClick={"http://localhost:5173/"}>To front page</button>
     </section>
   )
 }

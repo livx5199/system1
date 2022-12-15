@@ -1,5 +1,6 @@
 import React from 'react'
 
+
 let theID;
 
 export function reserveSpot(payload) {
@@ -17,8 +18,8 @@ export function reserveSpot(payload) {
         })
 }
 
-export function fulfillReservation(istimedout) {
-  const finalID = { id: `${theID}` } 
+export async function fulfillReservation() {
+  const finalID = { id: `${theID}` }
   
 
     const options = {
@@ -27,20 +28,37 @@ export function fulfillReservation(istimedout) {
         body: JSON.stringify(finalID)
       };
       
-      fetch('http://localhost:8080/fullfill-reservation', options)
-        .then(response => response.json())
-        .then((response) => {
-          console.log("fulfillReservation", response)
-          if (response.message === "ID not found") {
-            istimedout = true;
-          } else {
-            istimedout = false;
-          }
-          console.log(istimedout);
-        })
-        .catch(err => console.error(err));
+      // fetch('http://localhost:8080/fullfill-reservation', options)
+      //   .then(response => response.json())
+      //   .then((response) => {
+      //     console.log("fulfillReservation", response)
+      //     if (response.message === "ID not found") {
+      //       istimedout = true;
+      //     } else {
+      //       istimedout = false;
+      //     }
+      //     getResponseFromFulfillReservation(istimedout);
+      //   })
+      //   .catch(err => console.error(err));
+  
+  let res = await fetch('http://localhost:8080/fullfill-reservation', options);
+  
+  if (res.ok) {
+
+    // let text = await res.text();
+    // return text;
+
+    let ret = await res.json();
+    console.log(ret)
+    return ret;
+
+} else {
+    return `HTTP error: ${res.status}`;
+}
+  
 
 }
+
 
 export function insertOrder(payload) {
   const url = "https://vgkcikorodjjfitynvhd.supabase.co"

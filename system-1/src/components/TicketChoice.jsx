@@ -9,10 +9,14 @@ function TicketChoice(props) {
   function submit(e) {
     e.preventDefault();
 
+    
+
     if (props.cart.length === 0) {
       setMessage("You must choose min. 1 ticket to proceed")
     } else {
       setMessage("")
+      props.setShowCampingChoice(true)
+      props.setShowTicketChoice(false)
     }
   }
 

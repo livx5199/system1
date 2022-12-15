@@ -3,6 +3,13 @@ import BasketButton from './BasketButton';
 
 function Basket(props) {
 
+  function submit(e) {
+    e.preventDefault();
+
+    props.setShowPersonalInfo(true)
+    props.setShowBasket(false)
+  }
+
   function getTotal() {
     let total = 0;
 
@@ -16,7 +23,8 @@ function Basket(props) {
       <div>
           <h1>CHECKOUT</h1>
       <section className="container">
-        <h3>Your order</h3>
+        <h3>Your basket</h3>
+        <h4>Is everything in order?</h4>
         <div className="basket">
           {props.cart.map((item) => (
             <div key={item.id} className="list-item">
@@ -33,6 +41,13 @@ function Basket(props) {
         <div className="list-item total">
           <h4>Total</h4>
           <h4>{getTotal()},-</h4>
+        </div>
+        <div className="basket-buttons">
+          <button onClick={() => {
+            props.setShowTicketChoice(true)
+            props.setShowBasket(false)
+        }}>No, take me back</button>
+          <button onClick={submit}>Yes, I'm good</button>
         </div>
       </section>
     </div>

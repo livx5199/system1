@@ -9,6 +9,8 @@ import SliderText from './components/SliderText'
 import ThankYou from './components/ThankYou'
 import Timeout from './components/Timeout'
 import Footer from './components/Footer'
+import PersonalInfo from './components/PersonalInfo'
+import PaymentInfo from './components/PaymentInfo'
 
 function App() {
 
@@ -21,12 +23,20 @@ function App() {
   //Camping spots
   const [campingSpots, setCampingSpots] = useState([])
 
+  //Show section-states
+  const [showTicketChoice, setShowTicketChoice] = useState(true)
+  const [showCampingChoice, setShowCampingChoice] = useState(false)
+  const [showBasket, setShowBasket] = useState(false)
+  const [showPersonalInfo, setShowPersonalInfo] = useState(false)
+  const [showPaymentInfo, setShowPaymentInfo] = useState(false)
+  const [showThankYou, setShowThankYou] = useState(false)
+  const [showTimeout, setShowTimeout] = useState(false)
+
   //Standard ticket array for personal info
   const [totalTickets, setTotalTickets] = useState([])
 
+  //Defining varible for storing personal info
   let ticketInfo = [];
-
-  let isTimedout = false;
 
   //Variable for total number of tickets reserved
   let filterVIPTickets;
@@ -72,8 +82,20 @@ function App() {
     }
     getCampingData();
   }, [])
-
+  
   //Creates a template for objects
+  class personObject {
+    constructor(typeofticket, fullname, email, address, postal, city, basket) {
+      this.typeofticket = typeofticket;
+      this.fullname = fullname;
+      this.email = email;
+      this.address = address;
+      this.postal = postal;
+      this.city = city;
+      this.basket = basket;
+    }
+  }
+  
   class objectTemplate {
     constructor(name, price, id, contains) {
       this.name = name;
@@ -152,17 +174,19 @@ function App() {
 
       <Splash />
 
-      <TicketChoice ticketchoices={tickets} addToTicketArray={addToTicketArray} removeFromTicketArray={removeFromTicketArray} cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} />
+      {showTicketChoice && <TicketChoice ticketchoices={tickets} addToTicketArray={addToTicketArray} removeFromTicketArray={removeFromTicketArray} cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} setShowCampingChoice={setShowCampingChoice} setShowTicketChoice={setShowTicketChoice} />}
 
-      <CampingChoice data={greenCamping} ticketsincart={ticketsInCart} getatents={getATents} amountofpeople={amountOfPeople} campingspots={campingSpots} cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} />
+      {showCampingChoice && <CampingChoice data={greenCamping} ticketsincart={ticketsInCart} getatents={getATents} amountofpeople={amountOfPeople} campingspots={campingSpots} cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} setShowCampingChoice={setShowCampingChoice} setShowBasket={setShowBasket} />}
 
-      <Basket ticketchoices={tickets} cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} />
+      {showBasket && <Basket ticketchoices={tickets} cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} setShowBasket={setShowBasket} setShowPersonalInfo={setShowPersonalInfo} setShowTicketChoice={setShowTicketChoice} />}
 
-      <Checkout cart={cart} ticketinfo={ticketInfo} totaltickets={totalTickets} istimedout={isTimedout} />
+      {showPersonalInfo && <PersonalInfo totaltickets={totalTickets} cart={cart} ticketinfo={ticketInfo} personobject={personObject} setShowPaymentInfo={setShowPaymentInfo} setShowPersonalInfo={setShowPersonalInfo}/>}
 
-      <ThankYou cart={cart} />
+      {showPaymentInfo && <PaymentInfo campingspots={campingSpots} ticketinfo={ticketInfo} personobject={personObject} setShowPaymentInfo={setShowPaymentInfo} setShowThankYou={setShowThankYou} setShowTimeout={setShowTimeout} />}
+
+      {showThankYou && <ThankYou cart={cart}/>}
       
-      <Timeout />
+      {showTimeout && <Timeout />}
       
       <Footer />
 

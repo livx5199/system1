@@ -50,7 +50,9 @@ function PersonalInfo(props) {
       )
       props.ticketinfo.push(obj)
     })
-    console.log(props.ticketinfo)
+    
+    props.setShowPaymentInfo(true)
+    props.setShowPersonalInfo(false)
   }
 
   //VIEW

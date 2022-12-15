@@ -125,11 +125,13 @@ label {
 }
 
 input, select {
-  background-color: var(--accent-color-two);
-  border-color: var(--primary-color-two);
+  color: white;
+  background-color: var(--primary-color-three);
+  border-color: var(--accent-color-one);
   border-style: none;
   padding: 1rem;
   font-size: 1rem;
+  accent-color: var(--primary-color-three);
 }
 
 header {
@@ -218,6 +220,17 @@ input, select {
     width: 50px;
     height: 50px;
     font-weight: bolder;
+  }
+}
+
+/*BASKET SECTION*/
+.basket-buttons {
+  display: flex;
+  align-self: center;
+  gap: 1rem;
+
+  button {
+    width: 142px;
   }
 }
 
