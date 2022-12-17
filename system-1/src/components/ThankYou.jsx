@@ -1,4 +1,6 @@
 import React from 'react'
+import { ReactComponent as GraphicElementHorizontal } from "../SVG/graphic-element-horizontal.svg";
+
 
 function ThankYou(props) {
 
@@ -13,7 +15,8 @@ function ThankYou(props) {
 
   return (
       <section className='container'>
-          <h3>THANK YOU!</h3>
+      <h3>THANK YOU!</h3>
+      <GraphicElementHorizontal className="graphic-element-horizontal" />
           <h4>Your order has been placed.</h4>
 
           <div className="basket">

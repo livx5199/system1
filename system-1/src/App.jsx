@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import Basket from './components/Basket'
 import CampingChoice from './components/CampingChoice'
-import Checkout from './components/Checkout'
 import Splash from './components/Splash'
 import TicketChoice from './components/TicketChoice'
 import Header from './components/Header'
@@ -11,6 +10,7 @@ import Timeout from './components/Timeout'
 import Footer from './components/Footer'
 import PersonalInfo from './components/PersonalInfo'
 import PaymentInfo from './components/PaymentInfo'
+import { ReactComponent as GraphicElement } from "./SVG/graphic-element.svg";
 
 function App() {
 
@@ -25,12 +25,12 @@ function App() {
 
   //Show section-states
   const [showTicketChoice, setShowTicketChoice] = useState(true)
-  const [showCampingChoice, setShowCampingChoice] = useState(false)
-  const [showBasket, setShowBasket] = useState(false)
-  const [showPersonalInfo, setShowPersonalInfo] = useState(false)
-  const [showPaymentInfo, setShowPaymentInfo] = useState(false)
-  const [showThankYou, setShowThankYou] = useState(false)
-  const [showTimeout, setShowTimeout] = useState(false)
+  const [showCampingChoice, setShowCampingChoice] = useState(true)
+  const [showBasket, setShowBasket] = useState(true)
+  const [showPersonalInfo, setShowPersonalInfo] = useState(true)
+  const [showPaymentInfo, setShowPaymentInfo] = useState(true)
+  const [showThankYou, setShowThankYou] = useState(true)
+  const [showTimeout, setShowTimeout] = useState(true)
 
   //Standard ticket array for personal info
   const [totalTickets, setTotalTickets] = useState([])
@@ -169,10 +169,11 @@ function App() {
   return (
     <div className="App">
       <Header />
-
+<GraphicElement className="graphic-element" />
       <SliderText />
-
+      
       <Splash />
+      
 
       {showTicketChoice && <TicketChoice ticketchoices={tickets} addToTicketArray={addToTicketArray} removeFromTicketArray={removeFromTicketArray} cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} setShowCampingChoice={setShowCampingChoice} setShowTicketChoice={setShowTicketChoice} />}
 

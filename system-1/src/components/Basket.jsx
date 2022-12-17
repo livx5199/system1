@@ -1,5 +1,6 @@
 import React from 'react'
-import BasketButton from './BasketButton';
+import { ReactComponent as GraphicElementHorizontal } from "../SVG/graphic-element-horizontal.svg";
+
 
 function Basket(props) {
 
@@ -24,6 +25,7 @@ function Basket(props) {
           <h1>CHECKOUT</h1>
       <section className="container">
         <h3>Your basket</h3>
+        <GraphicElementHorizontal className="graphic-element-horizontal"/>
         <h4>Is everything in order?</h4>
         <div className="basket">
           {props.cart.map((item) => (

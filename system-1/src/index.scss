@@ -49,6 +49,7 @@ body {
   min-width: 320px;
   min-height: 100vh;
   background-color: var(--primary-color-one);
+ 
 }
 
 h1 {
@@ -91,6 +92,7 @@ button:focus-visible {
 .container {
   display: flex;
   flex-direction: column;
+  position: relative;
   padding: 3rem;
   background-color: white;
   border-radius: 5px;
@@ -107,10 +109,12 @@ button:focus-visible {
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
 }
 
 label {
   color: var(--primary-color-three);
+  font-weight: 600;
 }
 
 .section-h1 {
@@ -157,6 +161,10 @@ header {
   .header-logo {
     max-width: 80px;
     padding-left: 1rem;
+
+    @media (min-width: 500px) {
+      max-width: 100px;
+    }
   }
 
   p {
@@ -167,6 +175,12 @@ header {
 
 input, select {
   margin-bottom: 0.5rem;
+}
+
+.graphic-element-horizontal {
+width: 40%;
+align-self: center;
+margin-bottom: 1rem;
 }
 
 
@@ -199,10 +213,10 @@ input, select {
     padding-left: 100%;
     letter-spacing: 0.65px;
     height: 100%;
-  //   animation-name: slide;
-  // animation-duration: 10s; 
-  // animation-iteration-count: infinite;
-  // animation-timing-function: linear;
+    animation-name: slide;
+  animation-duration: 10s; 
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
   }
 
   .marquee-text-two p {
@@ -219,16 +233,39 @@ input, select {
 }
 
 .splash {
+  width: 100vw;
+  background-repeat: no-repeat;
+  
   text-align: center;
   padding-top: 1rem;
   padding-bottom: 1rem;
 
+  @media (min-width: 500px) {
+    padding-top: 2rem
+  }
+  
+  h4 {
+    font-size: 1.5rem;
+  }
+
+  h3 {
+    font-weight: 500;
+  }
+
   .mosaic-splash {
     padding-top: 1rem;
     padding-bottom: 1rem;
+    max-width: 70%;
 
     @media (max-width: 500px) {
-      max-width: 90%;
+      max-width: 85%;
+    }
+
+  }
+
+  .splash-bands {
+    @media (min-width: 500px) {
+      width: 70%;
     }
   }
 
@@ -243,17 +280,29 @@ input, select {
 
   h3 {
     font-size: 1.5rem;
-    font-weight: 500;
   } 
-
-  h4 {
-    font-size: 1.5rem;
-  }
-    
   }
 }
 
+.graphic-element {
+  position:absolute;
+  width: 14%;
+  top: 3.3%;
+  left: 83%;
+
+  @media (max-width: 800px) {
+    display: none;
+  }
+}
+
+/*TICKET CHOICE SECTION*/
+
 /*TICKET BUTTON*/
+
+.ticketbutton {
+   font-size: 1.3rem;
+  margin-bottom: 1rem; 
+}
 
 .counter-container {
   display: flex;
@@ -297,6 +346,12 @@ input, select {
 
 /*PERSONAL INFO SECTION*/
 
+.personal-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .form {
   display: flex;
   flex-direction: column;
@@ -316,6 +371,16 @@ input, select {
     input {
       margin-bottom: 1rem;
     }
+  }
+}
+
+.volunteer-shift {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+
+  select {
+    margin-bottom: 1rem;
   }
 }
 

@@ -1,5 +1,7 @@
 import React from 'react'
 import { fulfillReservation, insertOrder } from "../modules/database"
+import { ReactComponent as GraphicElementHorizontal } from "../SVG/graphic-element-horizontal.svg";
+
   
 function PaymentInfo(props) {
 
@@ -56,7 +58,8 @@ function PaymentInfo(props) {
 
   return (
     <form onSubmit={submit}><section className="container">
-    <h3>Payment info</h3>
+      <h3>Payment info</h3>
+      <GraphicElementHorizontal className="graphic-element-horizontal" />
     <label htmlFor="credit-card-number">Credit card number</label>
     <input required type="number" name="credit-card-number" id="credit-card-number" />
 

@@ -3,6 +3,8 @@ import { Fragment } from 'react';
 import { useRef, useState } from 'react'
 import { reserveSpot } from "../modules/database"
 import GetATentButton from './GetATentButton';
+import { ReactComponent as GraphicElementHorizontal } from "../SVG/graphic-element-horizontal.svg";
+
 
 
 function CampingChoice(props) {
@@ -75,6 +77,7 @@ function CampingChoice(props) {
           <h1 className='section-h1'>CAMPING</h1>
       <section className='container'>
         <h3>Where do you want to camp?</h3>
+        <GraphicElementHorizontal className="graphic-element-horizontal"/>
         <label htmlFor="select">Choose camping area</label>
         <select required onChange={showAvailability} ref={Spot} name="camping-area" id="camping-area">
           {props.campingspots.map((spot) =>
@@ -85,16 +88,17 @@ function CampingChoice(props) {
         <p style={style}>{message}</p>
 
         <h3>Get a tent</h3>
+        <GraphicElementHorizontal className="graphic-element-horizontal"/>
         <p>Wanna ease your travellings? We have a solution! Add our tent-package and we will set up a cozy Thinsburg-tent at your preferred spot - ready for your arrival.</p>
           {props.getatents.map((tent) =>
             <GetATentButton data={tent} amountofpeople={props.amountofpeople} ticketsincart={props.ticketsincart} key={tent.name} addToCart={props.addToCart} removeFromCart={props.removeFromCart}/>)}
 
         <div className="green-camping">
-        <h3>Green camping</h3>
+          <h3>Green camping</h3>
+          <GraphicElementHorizontal className="graphic-element-horizontal"/>
         <label htmlFor="input">Add green camping (249,-)</label>
           <input onChange={toggleGreenCamping} checked={checked} type="checkbox" />
         </div>
-
         <button onClick={showSpots}>To checkout</button>
       </section>
     </div>

@@ -1,6 +1,7 @@
 import React from 'react'
-import { insertOrder } from "../modules/database"
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
+import { ReactComponent as GraphicElementHorizontal } from "../SVG/graphic-element-horizontal.svg";
+
 
 function PersonalInfo(props) {
 
@@ -8,6 +9,12 @@ function PersonalInfo(props) {
   //The amount of tickets in cart
   let amountOfStandardTickets = props.totaltickets.filter(item => item.name === "Standard ticket")
   let amountOfVIPTickets = props.totaltickets.filter(item => item.name === "VIP ticket")
+
+  const [checked, setChecked] = useState(false)
+
+  const toggleIsAble = () => {
+    setChecked(!checked);
+  }
 
   //Clicking "To payment" button: Inserting form-data into the API
   function submit(e) {
@@ -39,7 +46,7 @@ function PersonalInfo(props) {
         basketValue = null;
       }
 
-      let obj = new props.personobject(
+      let obj = new personObject(
         person.querySelector(".typeofticket").innerText,
         person.querySelector('.fullname').value,
         person.querySelector('.email').value,
@@ -68,6 +75,7 @@ function PersonalInfo(props) {
             <div className='ticket'>
 
               <h3 className="typeofticket">Participant info: {ticket.name}</h3>
+              <GraphicElementHorizontal className="graphic-element-horizontal" />
               
               <div className="radio-button">
                 <input className='radio' name="radio" type="radio" />
@@ -84,6 +92,36 @@ function PersonalInfo(props) {
               <input required type="text" name="address" className="address" placeholder='Street/floor/number' />
               <input required type="text" name="postal" className="postal" placeholder='Postal code' />
               <input required type="text" name="city" className="city" placeholder='City' />
+
+              <div className="volunteer-shift">
+                <h3>Volunteer shift</h3>
+                <GraphicElementHorizontal className="graphic-element-horizontal" />
+                <p>At MOSAIC we help each other out. Therefore every guest (if able) is obligated to take part in the community by taking a four(ish)-hour shift of their choosing. No whips - we promise free food and fun! Select your shift here.</p>
+                <label htmlFor="shift-area">Choose field</label>
+                <select name="shift-area" id="shift-area">
+                  <option value="Preparing food">Preparing food</option>
+                  <option value="Cleaning up">Cleaning up the camp site</option>
+                  <option value="Assisting at stations">Assisting at stations</option>
+                </select>
+
+                <label htmlFor="shift-day">Choose day</label>
+                <select name="shift-day" id="shift-day">
+                  <option value="Wednesday">Wednesday</option>
+                  <option value="Thursday">Thursday</option>
+                  <option value="Friday">Friday</option>
+                  <option value="Saturday">Saturday</option>
+                </select>
+
+                <label htmlFor="shift-time">Choose time of shift</label>
+                <select name="shift-time" id="shift-time">
+                  <option value="Wednesday">08.00 - 12.00</option>
+                  <option value="Thursday">14.30 - 18.30</option>
+                  <option value="Friday">16.30 - 20.30</option>
+                </select>
+
+                <label htmlFor="isnotable">I am not able to take a shift</label>
+                <input name="isnotable" onChange={toggleIsAble} checked={checked} type="checkbox" />
+              </div>
           
             </div>
           )
@@ -94,6 +132,7 @@ function PersonalInfo(props) {
             <div className='ticket'>
 
               <h3 className="typeofticket">Participant info: {ticket.name}</h3>
+              <GraphicElementHorizontal className="graphic-element-horizontal" />
               
               <div className="radio-button">
                 <input className='radio' name="radio" type="radio" />
@@ -110,6 +149,36 @@ function PersonalInfo(props) {
               <input required type="text" name="address" className="address" placeholder='Street/floor/number' />
               <input required type="text" name="postal" className="postal" placeholder='Postal code' />
               <input required type="text" name="city" className="city" placeholder='City' />
+
+              <div className="volunteer-shift">
+                <h3>Volunteer shift</h3>
+                <GraphicElementHorizontal className="graphic-element-horizontal" />
+                <p>At MOSAIC we help each other out. Therefore every guest (if able) is obligated to take part in the community by taking a four(ish)-hour shift of their choosing. Select your shift here.</p>
+                <label htmlFor="shift-area">Choose field</label>
+                <select name="shift-area" id="shift-area">
+                  <option value="Preparing food">Preparing food</option>
+                  <option value="Cleaning up">Cleaning up the camp site</option>
+                  <option value="Assisting at stations">Assisting at stations</option>
+                </select>
+
+                <label htmlFor="shift-day">Choose day</label>
+                <select name="shift-day" id="shift-day">
+                  <option value="Wednesday">Wednesday</option>
+                  <option value="Thursday">Thursday</option>
+                  <option value="Friday">Friday</option>
+                  <option value="Saturday">Saturday</option>
+                </select>
+
+                <label htmlFor="shift-time">Choose time of shift</label>
+                <select name="shift-time" id="shift-time">
+                  <option value="Wednesday">08.00 - 12.00</option>
+                  <option value="Thursday">14.30 - 18.30</option>
+                  <option value="Friday">16.30 - 20.30</option>
+                </select>
+
+                <label htmlFor="isnotable">I am not able to take a shift</label>
+                <input name="isnotable" onChange={toggleIsAble} checked={checked} type="checkbox" />
+              </div>
           
             </div>
           )
