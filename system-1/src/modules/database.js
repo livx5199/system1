@@ -1,11 +1,11 @@
-import React from 'react'
 
-
+const flyUrl = "https://foofestdatabase.fly.dev"
 let theID;
+
 
 export function reserveSpot(payload) {
 
-    fetch("http://localhost:8080/reserve-spot", {
+    fetch(flyUrl + "/reserve-spot", {
         method: "PUT",
         headers: {'Content-Type': 'application/json'},
     
@@ -27,26 +27,10 @@ export async function fulfillReservation() {
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(finalID)
       };
-      
-      // fetch('http://localhost:8080/fullfill-reservation', options)
-      //   .then(response => response.json())
-      //   .then((response) => {
-      //     console.log("fulfillReservation", response)
-      //     if (response.message === "ID not found") {
-      //       istimedout = true;
-      //     } else {
-      //       istimedout = false;
-      //     }
-      //     getResponseFromFulfillReservation(istimedout);
-      //   })
-      //   .catch(err => console.error(err));
   
-  let res = await fetch('http://localhost:8080/fullfill-reservation', options);
+  let res = await fetch(flyUrl + "/fullfill-reservation", options);
   
   if (res.ok) {
-
-    // let text = await res.text();
-    // return text;
 
     let ret = await res.json();
     console.log(ret)

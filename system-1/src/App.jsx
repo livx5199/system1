@@ -15,7 +15,7 @@ import { ReactComponent as GraphicElement } from "./SVG/graphic-element.svg";
 function App() {
 
   const localUrl = "http://localhost:8080/available-spots"
-  const flyUrl = "https://foofestdatabase.fly.dev/available-spots"
+  const flyUrl = "https://foofestdatabase.fly.dev"
 
   //Cart
   const [cart, setCart] = useState([])
@@ -25,12 +25,12 @@ function App() {
 
   //Show section-states
   const [showTicketChoice, setShowTicketChoice] = useState(true)
-  const [showCampingChoice, setShowCampingChoice] = useState(true)
-  const [showBasket, setShowBasket] = useState(true)
-  const [showPersonalInfo, setShowPersonalInfo] = useState(true)
-  const [showPaymentInfo, setShowPaymentInfo] = useState(true)
-  const [showThankYou, setShowThankYou] = useState(true)
-  const [showTimeout, setShowTimeout] = useState(true)
+  const [showCampingChoice, setShowCampingChoice] = useState(false)
+  const [showBasket, setShowBasket] = useState(false)
+  const [showPersonalInfo, setShowPersonalInfo] = useState(false)
+  const [showPaymentInfo, setShowPaymentInfo] = useState(false)
+  const [showThankYou, setShowThankYou] = useState(false)
+  const [showTimeout, setShowTimeout] = useState(false)
 
   //Standard ticket array for personal info
   const [totalTickets, setTotalTickets] = useState([])
@@ -78,7 +78,7 @@ function App() {
 
   useEffect(() => {
     async function getCampingData() {
-      const res = await fetch(localUrl);
+      const res = await fetch(flyUrl + "/available-spots");
       const data = await res.json();
       setCampingSpots(data);
     }
