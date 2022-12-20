@@ -1,7 +1,5 @@
 import React from 'react'
-import { Fragment } from 'react';
 import { useRef, useState } from 'react'
-import { reserveSpot } from "../modules/database"
 import GetATentButton from './GetATentButton';
 import { ReactComponent as GraphicElementHorizontal } from "../SVG/graphic-element-horizontal.svg";
 
@@ -32,7 +30,7 @@ function CampingChoice(props) {
     const filter = campingArray.filter(campingspot => campingspot.area === Spot.current.value)
     const payload = { area: filter[0].area, amount: props.ticketsincart }
 
-    reserveSpot(payload)
+    props.setCampingPayload(payload)
 
     const chosenArea = {
         name: Spot.current.value,
@@ -100,8 +98,9 @@ function CampingChoice(props) {
           
         <div className="green-camping sub-section">
           <h3>Green camping</h3>
-          <GraphicElementHorizontal className="graphic-element-horizontal"/>
-        <label htmlFor="input">Add green camping (249,-)</label>
+          <GraphicElementHorizontal className="graphic-element-horizontal" />
+          <p>At MOSAIC we strive to create a festival that contributes to a greener planet for everyone. Do you want to be part of the solution? By adding the Green Camping option to your purchase, we provide your camp with a luxurious basket containing phosphate-free soaps and shampoos, so you have more space in your bag and stay clean. 25% of the purchase we donate to GreenFest, an organisation who works to make carbon-neutral festival-solutions. And finally we throw in a complementary organic wine. What’s not to like? </p>
+          <h4>Add green camping (249,-)</h4>
           <input onChange={toggleGreenCamping} checked={checked} type="checkbox" />
         </div>
         <button className='end-button' onClick={showSpots}>To checkout</button>

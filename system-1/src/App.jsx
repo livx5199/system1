@@ -38,6 +38,9 @@ function App() {
   //Defining varible for storing personal info
   let ticketInfo = [];
 
+  //Defining variable for storing camping reservation-payload
+  const [campingPayload, setCampingPayload] = useState([])
+
   //Variable for total number of tickets reserved
   let filterVIPTickets;
   if (cart.filter(item => item.name === "VIP ticket").length === 0) {
@@ -54,7 +57,6 @@ function App() {
   }
 
   let ticketsInCart = filterStandardTickets + filterVIPTickets
-  console.log(cart)
 
   //Variable for total number of camping spots reserved
   let filter2persTent;
@@ -177,9 +179,9 @@ function App() {
 
       {showTicketChoice && <TicketChoice ticketchoices={tickets} addToTicketArray={addToTicketArray} removeFromTicketArray={removeFromTicketArray} cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} setShowCampingChoice={setShowCampingChoice} setShowTicketChoice={setShowTicketChoice} />}
 
-      {showCampingChoice && <CampingChoice data={greenCamping} ticketsincart={ticketsInCart} getatents={getATents} amountofpeople={amountOfPeople} campingspots={campingSpots} cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} setShowCampingChoice={setShowCampingChoice} setShowBasket={setShowBasket} />}
+      {showCampingChoice && <CampingChoice data={greenCamping} ticketsincart={ticketsInCart} getatents={getATents} amountofpeople={amountOfPeople} campingspots={campingSpots} cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} setCampingPayload={setCampingPayload} setShowCampingChoice={setShowCampingChoice} setShowBasket={setShowBasket} />}
 
-      {showBasket && <Basket ticketchoices={tickets} cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} setShowBasket={setShowBasket} setShowPersonalInfo={setShowPersonalInfo} setShowTicketChoice={setShowTicketChoice} />}
+      {showBasket && <Basket ticketchoices={tickets} cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} setShowBasket={setShowBasket} campingPayload={campingPayload} setShowPersonalInfo={setShowPersonalInfo} setShowTicketChoice={setShowTicketChoice} />}
 
       {showPersonalInfo && <PersonalInfo totaltickets={totalTickets} cart={cart} ticketinfo={ticketInfo} personobject={personObject} setShowPaymentInfo={setShowPaymentInfo} setShowPersonalInfo={setShowPersonalInfo}/>}
 

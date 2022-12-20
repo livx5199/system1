@@ -6,11 +6,9 @@ import { ReactComponent as GraphicElementHorizontal } from "../SVG/graphic-eleme
 function TicketChoice(props) {
 
   const [message, setMessage] = useState("")
-
+      
   function submit(e) {
     e.preventDefault();
-
-    
 
     if (props.cart.length === 0) {
       setMessage("You must choose min. 1 ticket to proceed")
@@ -32,7 +30,6 @@ function TicketChoice(props) {
           {props.ticketchoices.map((ticket) => 
             <TicketButton data={ticket} key={ticket.id} addToCart={props.addToCart} removeFromCart={props.removeFromCart} addToTicketArray={props.addToTicketArray} removeFromTicketArray={props.removeFromTicketArray} />)}
 
-          <h4>Total:</h4>
         </div>
         <button className='end-button' onClick={submit}>To camping reservations</button>
         <p style={{ color: "red" }}>{message}</p>

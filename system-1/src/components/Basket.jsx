@@ -1,11 +1,14 @@
 import React from 'react'
 import { ReactComponent as GraphicElementHorizontal } from "../SVG/graphic-element-horizontal.svg";
+import { reserveSpot } from "../modules/database"
 
 
 function Basket(props) {
 
   function submit(e) {
     e.preventDefault();
+
+    reserveSpot(props.campingPayload)
 
     props.setShowPersonalInfo(true)
     props.setShowBasket(false)
