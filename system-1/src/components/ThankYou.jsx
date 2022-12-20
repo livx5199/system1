@@ -40,7 +40,7 @@ function ThankYou(props) {
         </div>
           </div>
 
-          <button onClick={"http://localhost:5173/"}>To front page</button>
+          <button className='end-button' onClick={"http://localhost:5173/"}>To front page</button>
     </section>
   )
 }

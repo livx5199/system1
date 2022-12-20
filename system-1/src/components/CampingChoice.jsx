@@ -99,7 +99,7 @@ function CampingChoice(props) {
         <label htmlFor="input">Add green camping (249,-)</label>
           <input onChange={toggleGreenCamping} checked={checked} type="checkbox" />
         </div>
-        <button onClick={showSpots}>To checkout</button>
+        <button className='end-button' onClick={showSpots}>To checkout</button>
       </section>
     </div>
   )

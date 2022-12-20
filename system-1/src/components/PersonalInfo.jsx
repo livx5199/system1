@@ -183,7 +183,7 @@ function PersonalInfo(props) {
             </div>
           )
         })}
-        <button>To payment</button>
+        <button className='end-button'>To payment</button>
         </form>
       </div>      
     </section>

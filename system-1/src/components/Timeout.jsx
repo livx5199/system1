@@ -8,7 +8,7 @@ function Timeout() {
       <h3>SORRY!</h3>
       <GraphicElementHorizontal className="graphic-element-horizontal" />
           <h4>Your session has timed out.</h4>
-          <button>Start over</button>
+          <button className='end-button'>Start over</button>
     </section>
   )
 }

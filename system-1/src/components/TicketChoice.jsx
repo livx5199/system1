@@ -32,7 +32,7 @@ function TicketChoice(props) {
             <TicketButton data={ticket} key={ticket.id} addToCart={props.addToCart} removeFromCart={props.removeFromCart} addToTicketArray={props.addToTicketArray} removeFromTicketArray={props.removeFromTicketArray} />)}
 
         <h4>Total:</h4>
-        <button onClick={submit}>To camping reservations</button>
+        <button className='end-button' onClick={submit}>To camping reservations</button>
         <p style={{ color: "red" }}>{message}</p>
       </section>
     </div>

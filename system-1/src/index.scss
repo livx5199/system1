@@ -18,17 +18,20 @@
   --primary-color-two: #FFA394;
   --primary-color-three: #161B4B;
   --accent-color-one: #1D3786;
-  --accent-color-two: #DB675B;
+  --accent-color-two: #b03a2d;
+  --accent-color-three: #682D2D;
 
 }
 
 h1, h2, h3, h4, p {
   color: var(--primary-color-three);
   margin: 0.5rem;
+  letter-spacing: 1px;
 }
 
 h2 {
   font-size: 2.3rem;
+  font-style: italic;
 }
 
 h3 {
@@ -56,6 +59,7 @@ h1 {
   font-size: 2.5rem;
   line-height: 1.1;
   text-align: center;
+  font-style: italic;
 }
 
 button {
@@ -105,6 +109,12 @@ button:focus-visible {
  }
 }
 
+.sub-section {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
 .splash, .App {
   display: flex;
   flex-direction: column;
@@ -127,6 +137,10 @@ label {
   justify-content: space-between;
 }
 
+.end-button {
+margin-top: 1.5rem;
+}
+
 .list-item {
   display: flex;
   justify-content: space-between;
@@ -139,8 +153,8 @@ label {
 
 input, select {
   color: white;
-  background-color: var(--primary-color-three);
-  border-color: var(--accent-color-one);
+  background-color: var(--accent-color-three);
+  border-color: var(--accent-color-three);
   border-style: none;
   padding: 1rem;
   font-size: 1rem;
@@ -195,9 +209,7 @@ margin-bottom: 1rem;
   background-color: white;
 
   .marquee {
-    width: 100%;
-    position: absolute;
-    display: block;
+    display: flex;
     white-space: nowrap;
     overflow: hidden;
     min-width: 100%;
@@ -206,22 +218,19 @@ margin-bottom: 1rem;
 
   .marquee p {
     display: inline-block;
+    align-self: center;
     text-align: center;
     white-space: nowrap;
     font-weight: bold;
     min-width: 100%;
     padding-left: 100%;
     letter-spacing: 0.65px;
-    height: 100%;
     animation-name: slide;
   animation-duration: 10s; 
   animation-iteration-count: infinite;
   animation-timing-function: linear;
   }
 
-  .marquee-text-two p {
-    animation-delay: 5s;
-  }
 }
 
 @keyframes slide {
@@ -250,6 +259,10 @@ margin-bottom: 1rem;
 
   h3 {
     font-weight: 500;
+  }
+
+  .cls-1 {
+    fill: var(--accent-color-two);
   }
 
   .mosaic-splash {
@@ -287,7 +300,7 @@ margin-bottom: 1rem;
 .graphic-element {
   position:absolute;
   width: 14%;
-  top: 3.3%;
+  top: 150px;
   left: 83%;
 
   @media (max-width: 800px) {
@@ -416,6 +429,7 @@ footer {
   p {
     text-align: center;
     font-weight: bolder;
+    color: var(--accent-color-three);
   }
 
 }

@@ -31,7 +31,7 @@ function TicketButton(props) {
     
   return (
     <>
-      <h3 className='ticketbutton'>{props.data.name} ({props.data.price},-)</h3>
+      <h4 className='ticketbutton'>{props.data.name} ({props.data.price},-)</h4>
       <div className="counter-container">
       <button onClick={subtract}>-</button>
       <h4>{counter}</h4>

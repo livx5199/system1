@@ -45,11 +45,11 @@ function Basket(props) {
           <h4>{getTotal()},-</h4>
         </div>
         <div className="basket-buttons">
-          <button onClick={() => {
+          <button className='end-button' onClick={() => {
             props.setShowTicketChoice(true)
             props.setShowBasket(false)
         }}>No, take me back</button>
-          <button onClick={submit}>Yes, I'm good</button>
+          <button className='end-button' onClick={submit}>Yes, I'm good</button>
         </div>
       </section>
     </div>

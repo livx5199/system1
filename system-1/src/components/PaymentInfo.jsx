@@ -98,7 +98,7 @@ function PaymentInfo(props) {
     <label htmlFor="sec-code">Security code</label>
     <input required type="number" name="sec-code" id="sec-code" />
 
-    <button>Pay</button>
+    <button className='end-button'>Pay</button>
 
   </section></form>
   )
