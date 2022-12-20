@@ -26,12 +26,14 @@ function TicketChoice(props) {
           <h1 className='section-h1'>TICKETS</h1>
       <section className='container'>
         
-        <h3 className='ticket-h3'>Choose ticket type</h3>
+        <div className="sub-section">
+          <h3 className='ticket-h3'>Choose ticket type</h3>
         <GraphicElementHorizontal className="graphic-element-horizontal"/>
           {props.ticketchoices.map((ticket) => 
             <TicketButton data={ticket} key={ticket.id} addToCart={props.addToCart} removeFromCart={props.removeFromCart} addToTicketArray={props.addToTicketArray} removeFromTicketArray={props.removeFromTicketArray} />)}
 
-        <h4>Total:</h4>
+          <h4>Total:</h4>
+        </div>
         <button className='end-button' onClick={submit}>To camping reservations</button>
         <p style={{ color: "red" }}>{message}</p>
       </section>

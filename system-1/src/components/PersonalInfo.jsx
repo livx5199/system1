@@ -74,6 +74,7 @@ function PersonalInfo(props) {
           return (
             <div className='ticket'>
 
+              <div className="sub-section">
               <h3 className="typeofticket">Participant info: {ticket.name}</h3>
               <GraphicElementHorizontal className="graphic-element-horizontal" />
               
@@ -91,9 +92,10 @@ function PersonalInfo(props) {
               <label htmlFor="adress">Address</label>
               <input required type="text" name="address" className="address" placeholder='Street/floor/number' />
               <input required type="text" name="postal" className="postal" placeholder='Postal code' />
-              <input required type="text" name="city" className="city" placeholder='City' />
+                <input required type="text" name="city" className="city" placeholder='City' />
+                </div>
 
-              <div className="volunteer-shift">
+              <div className="volunteer-shift sub-section">
                 <h3>Volunteer shift</h3>
                 <GraphicElementHorizontal className="graphic-element-horizontal" />
                 <p>At MOSAIC we help each other out. Therefore every guest (if able) is obligated to take part in the community by taking a four(ish)-hour shift of their choosing. No whips - we promise free food and fun! Select your shift here.</p>
@@ -131,6 +133,7 @@ function PersonalInfo(props) {
           return (
             <div className='ticket'>
 
+              <div className="sub-section">
               <h3 className="typeofticket">Participant info: {ticket.name}</h3>
               <GraphicElementHorizontal className="graphic-element-horizontal" />
               
@@ -148,7 +151,8 @@ function PersonalInfo(props) {
               <label htmlFor="adress">Address</label>
               <input required type="text" name="address" className="address" placeholder='Street/floor/number' />
               <input required type="text" name="postal" className="postal" placeholder='Postal code' />
-              <input required type="text" name="city" className="city" placeholder='City' />
+                <input required type="text" name="city" className="city" placeholder='City' />
+                </div>
 
               <div className="volunteer-shift">
                 <h3>Volunteer shift</h3>

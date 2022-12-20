@@ -24,6 +24,7 @@ function Basket(props) {
       <div>
           <h1>CHECKOUT</h1>
       <section className="container">
+      <div className="sub-section">
         <h3>Your basket</h3>
         <GraphicElementHorizontal className="graphic-element-horizontal"/>
         <h4>Is everything in order?</h4>
@@ -43,7 +44,8 @@ function Basket(props) {
         <div className="list-item total">
           <h4>Total</h4>
           <h4>{getTotal()},-</h4>
-        </div>
+          </div>
+          </div>
         <div className="basket-buttons">
           <button className='end-button' onClick={() => {
             props.setShowTicketChoice(true)

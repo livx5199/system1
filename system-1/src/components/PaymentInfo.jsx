@@ -58,6 +58,8 @@ function PaymentInfo(props) {
 
   return (
     <form onSubmit={submit}><section className="container">
+
+    <div className="sub-section">
       <h3>Payment info</h3>
       <GraphicElementHorizontal className="graphic-element-horizontal" />
     <label htmlFor="credit-card-number">Credit card number</label>
@@ -96,7 +98,8 @@ function PaymentInfo(props) {
     </div>
 
     <label htmlFor="sec-code">Security code</label>
-    <input required type="number" name="sec-code" id="sec-code" />
+        <input required type="number" name="sec-code" id="sec-code" />
+        </div>
 
     <button className='end-button'>Pay</button>
 

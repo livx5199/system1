@@ -53,9 +53,9 @@ function CampingChoice(props) {
     let amountOfTickets;
     const filter = campingArray.filter(campingspot => campingspot.area === Spot.current.value)
 
-    if (props.cart.amount === 0) {
+    if (props.cart.length === 0) {
       amountOfTickets = 0;
-    } else if (props.cart.amount === 1) {
+    } else if (props.cart.length === 1) {
       amountOfTickets = props.cart[0].amount
     } else {
       amountOfTickets = props.cart[0].amount + props.cart[1].amount
@@ -76,6 +76,8 @@ function CampingChoice(props) {
       <div>
           <h1 className='section-h1'>CAMPING</h1>
       <section className='container'>
+
+      <div className="sub-section">
         <h3>Where do you want to camp?</h3>
         <GraphicElementHorizontal className="graphic-element-horizontal"/>
         <label htmlFor="select">Choose camping area</label>
@@ -85,15 +87,18 @@ function CampingChoice(props) {
           )}
           
         </select>
-        <p style={style}>{message}</p>
+          <p style={style}>{message}</p>
+          </div>
 
+          <div className="sub-section">
         <h3>Get a tent</h3>
         <GraphicElementHorizontal className="graphic-element-horizontal"/>
         <p>Wanna ease your travellings? We have a solution! Add our tent-package and we will set up a cozy Thinsburg-tent at your preferred spot - ready for your arrival.</p>
           {props.getatents.map((tent) =>
             <GetATentButton data={tent} amountofpeople={props.amountofpeople} ticketsincart={props.ticketsincart} key={tent.name} addToCart={props.addToCart} removeFromCart={props.removeFromCart}/>)}
-
-        <div className="green-camping">
+          </div>
+          
+        <div className="green-camping sub-section">
           <h3>Green camping</h3>
           <GraphicElementHorizontal className="graphic-element-horizontal"/>
         <label htmlFor="input">Add green camping (249,-)</label>

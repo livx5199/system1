@@ -14,7 +14,9 @@ function ThankYou(props) {
       }
 
   return (
-      <section className='container'>
+    <section className='container'>
+      
+      <div className="sub-section">
       <h3>THANK YOU!</h3>
       <GraphicElementHorizontal className="graphic-element-horizontal" />
           <h4>Your order has been placed.</h4>
@@ -38,7 +40,8 @@ function ThankYou(props) {
           <h4>Total</h4>
           <h4>{getTotal()},-</h4>
         </div>
-          </div>
+        </div>
+      </div>
 
           <button className='end-button' onClick={"http://localhost:5173/"}>To front page</button>
     </section>
